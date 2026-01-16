@@ -491,24 +491,83 @@ async def update_profile(update: ProfileUpdate, current_user: dict = Depends(get
 
 @api_router.get("/discover")
 async def discover_profiles(current_user: dict = Depends(get_current_user)):
-    """Get profiles to swipe on - excludes already swiped and self"""
+    """Get profiles to swipe on - excludes already swiped and self.
+
+    Applies basic match preferences:
+    - Excludes users you've already swiped on and yourself
+    - Respects your age range and gender preferences when set
+    - Softly respects the other person's age range and gender prefs
+    - Filters out profiles that hit your dealbreaker red flags
+    """
     user_id = current_user["user_id"]
-    
-    # Get users already swiped on
-    swiped = await db.swipes.find({"swiper_id": user_id}, {"_id": 0, "target_id": 1}).to_list(1000)
+
+    # Build list of user_ids to exclude (already swiped + self)
+    swiped = await db.swipes.find(
+        {"swiper_id": user_id}, {"_id": 0, "target_id": 1}
+    ).to_list(1000)
     swiped_ids = [s["target_id"] for s in swiped]
-    swiped_ids.append(user_id)  # Exclude self
-    
-    # Find profiles not yet swiped, with complete profiles
-    profiles = await db.users.find(
+    swiped_ids.append(user_id)
+
+    # Base candidate set: complete profiles not yet swiped
+    candidates = await db.users.find(
         {
             "user_id": {"$nin": swiped_ids},
-            "profile_complete": True
+            "profile_complete": True,
         },
-        {"_id": 0, "password_hash": 0}
-    ).to_list(50)
-    
-    return profiles
+        {"_id": 0, "password_hash": 0},
+    ).to_list(200)
+
+    # Pull current user preferences
+    my_age = current_user.get("age")
+    my_gender = current_user.get("gender_identity")
+    pref_age_min = current_user.get("pref_age_min")
+    pref_age_max = current_user.get("pref_age_max")
+    pref_genders = current_user.get("pref_genders") or []
+    dealbreakers = current_user.get("dealbreaker_red_flags") or []
+
+    filtered: list[dict] = []
+
+    for cand in candidates:
+        cand_age = cand.get("age")
+        cand_gender = cand.get("gender_identity")
+
+        # 1) Your age range preferences (if set)
+        if pref_age_min is not None:
+            if cand_age is None or cand_age < pref_age_min:
+                continue
+        if pref_age_max is not None:
+            if cand_age is None or cand_age > pref_age_max:
+                continue
+
+        # 2) Your gender preferences (if set)
+        if pref_genders:
+            if not cand_gender or cand_gender not in pref_genders:
+                continue
+
+        # 3) Their age range preferences (soft mutual filter)
+        cand_pref_min = cand.get("pref_age_min")
+        cand_pref_max = cand.get("pref_age_max")
+        if my_age is not None:
+            if cand_pref_min is not None and my_age < cand_pref_min:
+                continue
+            if cand_pref_max is not None and my_age > cand_pref_max:
+                continue
+
+        # 4) Their gender preferences (if they set any)
+        cand_pref_genders = cand.get("pref_genders") or []
+        if my_gender and cand_pref_genders:
+            if my_gender not in cand_pref_genders:
+                continue
+
+        # 5) Dealbreaker red flags (hard filter)
+        if dealbreakers:
+            cand_flags = cand.get("red_flags") or []
+            if any(flag in cand_flags for flag in dealbreakers):
+                continue
+
+        filtered.append(cand)
+
+    return filtered
 
 @api_router.post("/swipe")
 async def swipe(action: SwipeAction, current_user: dict = Depends(get_current_user)):
