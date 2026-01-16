@@ -533,7 +533,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                 </div>
 
                 {/* Match age range */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-[hsl(var(--border))] pt-4 mt-4"
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-[hsl(var(--border))] pt-4 mt-4">
                   <div className="space-y-2">
                     <Label className="text-[#E0E0E0] uppercase text-sm">Pref Age Min</Label>
                     <Input
