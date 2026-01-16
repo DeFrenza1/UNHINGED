@@ -2,8 +2,8 @@
   "identity": {
     "name": "Unhinged",
     "tagline": "Dating for the Flawed & Chaotic",
-    "tone": "Satirical, Chaotic, Brutalist, Self-Deprecating",
-    "aesthetic": "Neon Retro x Anti-Design x Neubrutalism"
+    "tone": "Playful, Self-Aware, Warm, Slightly Chaotic",
+    "aesthetic": "Soft Neon x Modern Dark UI (Less Brutalist)"
   },
   "typography": {
     "primary_font": "Space Mono",
@@ -48,9 +48,9 @@
   },
   "components": {
     "buttons": {
-      "primary": "bg-[#39FF14] text-black font-bold uppercase px-8 py-4 border-2 border-[#39FF14] hover:bg-black hover:text-[#39FF14] transition-all duration-0 shadow-[4px_4px_0px_0px_#FFFFFF]",
-      "secondary": "bg-transparent text-[#FF00FF] border-2 border-[#FF00FF] font-bold uppercase px-8 py-4 hover:bg-[#FF00FF] hover:text-black transition-all duration-0 shadow-[4px_4px_0px_0px_#FFFFFF]",
-      "destructive": "bg-[#FF3B30] text-white font-bold uppercase px-6 py-3 hover:bg-red-700 shadow-[4px_4px_0px_0px_#000000]"
+      "primary": "bg-emerald-400 text-slate-900 font-semibold px-6 py-3 rounded-full shadow-md hover:bg-emerald-300 transition-colors",
+      "secondary": "bg-transparent text-sky-400 border border-sky-400 font-semibold px-6 py-3 rounded-full hover:bg-sky-500/10 transition-colors",
+      "destructive": "bg-rose-500 text-white font-semibold px-5 py-2.5 rounded-full hover:bg-rose-600 shadow-sm"
     },
     "cards": {
       "profile": "bg-[#111] border-2 border-white/20 p-4 relative overflow-hidden hover:border-[#39FF14] transition-colors",
