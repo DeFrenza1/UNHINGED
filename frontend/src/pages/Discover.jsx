@@ -175,7 +175,19 @@ const Discover = ({ user, token }) => {
               <div className="p-4 space-y-4">
                 {/* Bio */}
                 {currentProfile.bio && (
-                  <p className="text-slate-600 font-mono text-sm">{currentProfile.bio}</p>
+                  <p className="text-slate-600 font-mono text-sm mb-1">{currentProfile.bio}</p>
+                )}
+
+                {/* Chaos compatibility (backend score) */}
+                {typeof currentProfile.match_score === "number" && (
+                  <p className="text-xs font-mono text-purple-600">
+                    Chaos compatibility: {" "}
+                    {currentProfile.match_score >= 8
+                      ? "High"
+                      : currentProfile.match_score >= 4
+                      ? "Medium"
+                      : "Low"}
+                  </p>
                 )}
 
                 {/* Red Flags */}
@@ -232,7 +244,7 @@ const Discover = ({ user, token }) => {
                   variant="outline"
                   onClick={() => analyzeCompatibility(currentProfile.user_id)}
                   disabled={compatibilityLoading}
-                  className="w-full border-2 border-[#00FFFF]/50 text-[#00FFFF] hover:bg-[#00FFFF]/10 font-mono rounded-none"
+                  className="w-full border border-purple-400 text-purple-600 hover:bg-purple-50 font-mono rounded-full"
                   data-testid="analyze-compatibility-btn"
                 >
                   {compatibilityLoading ? (
@@ -245,7 +257,7 @@ const Discover = ({ user, token }) => {
 
                 {/* Compatibility Result */}
                 {compatibility && (
-                  <div className="bg-[#00FFFF]/10 border border-[#00FFFF]/30 p-3 font-mono text-sm text-[#00FFFF]">
+                  <div className="bg-purple-50 border border-purple-200 p-3 font-mono text-sm text-slate-800 rounded-2xl">
                     {compatibility}
                   </div>
                 )}
