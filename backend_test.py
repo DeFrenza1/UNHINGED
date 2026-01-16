@@ -509,7 +509,7 @@ class UnhingedAPITester:
             "photos": ["https://via.placeholder.com/400x600"],
             "pref_age_min": 22,
             "pref_age_max": 28,
-            "pref_genders": ["Women"],
+            "pref_genders": ["Woman"],  # Fixed: Use "Woman" to match gender_identity
             "relationship_type": "Long-term",
             "has_kids": "No", 
             "wants_kids": "Yes"
