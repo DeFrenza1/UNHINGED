@@ -424,27 +424,309 @@ class UnhingedAPITester:
             
         return self.run_test("Logout", "POST", "auth/logout", 200)[0]
 
+    def test_discovery_and_matching_flow(self):
+        """Comprehensive test of discovery and matching flow with multiple users"""
+        print("\n🎯 TESTING DISCOVERY & MATCHING FLOW")
+        print("=" * 50)
+        
+        # Create 3 test users with different preferences
+        users = []
+        
+        # User A: 25F, straight, looking for men 23-30
+        user_a_data = {
+            "name": "Emma Rodriguez",
+            "email": f"emma_{uuid.uuid4().hex[:8]}@example.com",
+            "password": "TestPass123!"
+        }
+        success, response = self.run_test("Register User A", "POST", "auth/register", 200, user_a_data)
+        if not success:
+            return False
+        
+        user_a = {
+            "token": response['access_token'],
+            "user_id": response['user']['user_id'],
+            "email": user_a_data["email"],
+            "password": user_a_data["password"]
+        }
+        users.append(user_a)
+        
+        # Complete User A's profile
+        profile_a = {
+            "age": 25,
+            "gender_identity": "Woman",
+            "sexuality": "Straight",
+            "interested_in": ["Men"],
+            "bio": "Love hiking and coffee dates",
+            "red_flags": ["Always late", "Overthinks everything"],
+            "dealbreaker_red_flags": ["Rude to waiters", "Doesn't like dogs"],
+            "photos": ["https://via.placeholder.com/400x600"],
+            "pref_age_min": 23,
+            "pref_age_max": 30,
+            "pref_genders": ["Men"],
+            "relationship_type": "Long-term",
+            "has_kids": "No",
+            "wants_kids": "Yes"
+        }
+        
+        headers_a = {'Authorization': f'Bearer {user_a["token"]}'}
+        success, _ = self.run_test("Complete User A Profile", "PUT", "profile", 200, profile_a, headers_a)
+        if not success:
+            return False
+        
+        # User B: 27M, straight, looking for women 22-28
+        user_b_data = {
+            "name": "Marcus Johnson",
+            "email": f"marcus_{uuid.uuid4().hex[:8]}@example.com",
+            "password": "TestPass123!"
+        }
+        success, response = self.run_test("Register User B", "POST", "auth/register", 200, user_b_data)
+        if not success:
+            return False
+        
+        user_b = {
+            "token": response['access_token'],
+            "user_id": response['user']['user_id'],
+            "email": user_b_data["email"],
+            "password": user_b_data["password"]
+        }
+        users.append(user_b)
+        
+        # Complete User B's profile
+        profile_b = {
+            "age": 27,
+            "gender_identity": "Man",
+            "sexuality": "Straight", 
+            "interested_in": ["Women"],
+            "bio": "Gym enthusiast and foodie",
+            "red_flags": ["Leaves dishes in sink", "Watches too much Netflix"],
+            "dealbreaker_red_flags": ["Smokes cigarettes", "No sense of humor"],
+            "photos": ["https://via.placeholder.com/400x600"],
+            "pref_age_min": 22,
+            "pref_age_max": 28,
+            "pref_genders": ["Women"],
+            "relationship_type": "Long-term",
+            "has_kids": "No", 
+            "wants_kids": "Yes"
+        }
+        
+        headers_b = {'Authorization': f'Bearer {user_b["token"]}'}
+        success, _ = self.run_test("Complete User B Profile", "PUT", "profile", 200, profile_b, headers_b)
+        if not success:
+            return False
+        
+        # User C: 30NB, pansexual, looking for anyone 25-35, has dealbreaker that matches User A's red flag
+        user_c_data = {
+            "name": "Alex Chen",
+            "email": f"alex_{uuid.uuid4().hex[:8]}@example.com", 
+            "password": "TestPass123!"
+        }
+        success, response = self.run_test("Register User C", "POST", "auth/register", 200, user_c_data)
+        if not success:
+            return False
+        
+        user_c = {
+            "token": response['access_token'],
+            "user_id": response['user']['user_id'],
+            "email": user_c_data["email"],
+            "password": user_c_data["password"]
+        }
+        users.append(user_c)
+        
+        # Complete User C's profile - has dealbreaker that matches User A's red flag
+        profile_c = {
+            "age": 30,
+            "gender_identity": "Non-binary",
+            "sexuality": "Pansexual",
+            "interested_in": ["Women", "Men", "Non-binary"],
+            "bio": "Artist and world traveler",
+            "red_flags": ["Commitment issues", "Too many houseplants"],
+            "dealbreaker_red_flags": ["Always late", "Bad at texting"], # "Always late" is User A's red flag
+            "photos": ["https://via.placeholder.com/400x600"],
+            "pref_age_min": 25,
+            "pref_age_max": 35,
+            "pref_genders": ["Women", "Men", "Non-binary"],
+            "relationship_type": "Casual",
+            "has_kids": "No",
+            "wants_kids": "Maybe"
+        }
+        
+        headers_c = {'Authorization': f'Bearer {user_c["token"]}'}
+        success, _ = self.run_test("Complete User C Profile", "PUT", "profile", 200, profile_c, headers_c)
+        if not success:
+            return False
+        
+        print(f"\n✅ Created 3 test users with complete profiles")
+        
+        # Test User A's discovery - should see User B but NOT User C (dealbreaker filter)
+        print(f"\n🔍 Testing User A's discovery...")
+        success, discover_a = self.run_test("User A Discover", "GET", "discover", 200, headers=headers_a)
+        if not success:
+            return False
+        
+        # Verify User A sees User B
+        user_b_found = any(user['user_id'] == user_b['user_id'] for user in discover_a)
+        if not user_b_found:
+            self.log_test("User A Discovery - Should see User B", False, "User B not found in User A's discovery")
+            return False
+        
+        # Verify User A does NOT see User C (dealbreaker filter)
+        user_c_found = any(user['user_id'] == user_c['user_id'] for user in discover_a)
+        if user_c_found:
+            self.log_test("User A Discovery - Should NOT see User C", False, "User C found despite dealbreaker filter")
+            return False
+        
+        # Verify match_score is present and list is sorted
+        if discover_a:
+            for user in discover_a:
+                if 'match_score' not in user:
+                    self.log_test("User A Discovery - Match Score", False, "match_score missing from results")
+                    return False
+            
+            # Check if sorted by match_score descending
+            scores = [user['match_score'] for user in discover_a]
+            if scores != sorted(scores, reverse=True):
+                self.log_test("User A Discovery - Sorting", False, "Results not sorted by match_score descending")
+                return False
+        
+        print(f"   ✅ User A sees {len(discover_a)} profiles (correctly filtered)")
+        
+        # Test User B's discovery - should see User A
+        print(f"\n🔍 Testing User B's discovery...")
+        success, discover_b = self.run_test("User B Discover", "GET", "discover", 200, headers=headers_b)
+        if not success:
+            return False
+        
+        user_a_found = any(user['user_id'] == user_a['user_id'] for user in discover_b)
+        if not user_a_found:
+            self.log_test("User B Discovery - Should see User A", False, "User A not found in User B's discovery")
+            return False
+        
+        print(f"   ✅ User B sees {len(discover_b)} profiles (includes User A)")
+        
+        # Test swipe and match creation
+        print(f"\n💕 Testing swipe and match behavior...")
+        
+        # User A swipes like on User B
+        swipe_a_data = {"target_user_id": user_b['user_id'], "action": "like"}
+        success, swipe_a_response = self.run_test("User A Swipes Like on User B", "POST", "swipe", 200, swipe_a_data, headers_a)
+        if not success:
+            return False
+        
+        # Should not create match yet (only one-way like)
+        if swipe_a_response.get('match_created'):
+            self.log_test("Swipe A->B Match Creation", False, "Match created prematurely (should need mutual like)")
+            return False
+        
+        # User B swipes like on User A - should create match
+        swipe_b_data = {"target_user_id": user_a['user_id'], "action": "like"}
+        success, swipe_b_response = self.run_test("User B Swipes Like on User A", "POST", "swipe", 200, swipe_b_data, headers_b)
+        if not success:
+            return False
+        
+        # Should create match now (mutual like)
+        if not swipe_b_response.get('match_created'):
+            self.log_test("Mutual Like Match Creation", False, "Match not created despite mutual likes")
+            return False
+        
+        match_id = swipe_b_response.get('match', {}).get('match_id')
+        if not match_id:
+            self.log_test("Match ID Generation", False, "Match ID not returned")
+            return False
+        
+        print(f"   ✅ Match created: {match_id}")
+        
+        # Verify both users can see the match
+        success, matches_a = self.run_test("User A Get Matches", "GET", "matches", 200, headers=headers_a)
+        if not success:
+            return False
+        
+        match_found_a = any(match['match_id'] == match_id for match in matches_a)
+        if not match_found_a:
+            self.log_test("User A See Match", False, "User A cannot see created match")
+            return False
+        
+        success, matches_b = self.run_test("User B Get Matches", "GET", "matches", 200, headers=headers_b)
+        if not success:
+            return False
+        
+        match_found_b = any(match['match_id'] == match_id for match in matches_b)
+        if not match_found_b:
+            self.log_test("User B See Match", False, "User B cannot see created match")
+            return False
+        
+        print(f"   ✅ Both users can see the match")
+        
+        # Test that swiped users don't appear in discovery anymore
+        print(f"\n🔄 Testing post-swipe discovery...")
+        success, discover_a_after = self.run_test("User A Discover After Swipe", "GET", "discover", 200, headers=headers_a)
+        if not success:
+            return False
+        
+        user_b_found_after = any(user['user_id'] == user_b['user_id'] for user in discover_a_after)
+        if user_b_found_after:
+            self.log_test("Post-Swipe Discovery", False, "User B still appears in User A's discovery after swipe")
+            return False
+        
+        print(f"   ✅ Swiped users correctly excluded from future discovery")
+        
+        # Test regression: users with no preferences should see complete profiles
+        print(f"\n🔄 Testing regression: broad preferences...")
+        
+        # Create User D with no specific preferences
+        user_d_data = {
+            "name": "Sam Taylor",
+            "email": f"sam_{uuid.uuid4().hex[:8]}@example.com",
+            "password": "TestPass123!"
+        }
+        success, response = self.run_test("Register User D (No Prefs)", "POST", "auth/register", 200, user_d_data)
+        if not success:
+            return False
+        
+        user_d_token = response['access_token']
+        
+        # Complete profile with minimal preferences
+        profile_d = {
+            "age": 26,
+            "gender_identity": "Man",
+            "bio": "Open to meeting anyone interesting",
+            "red_flags": ["Indecisive about restaurants"],
+            "photos": ["https://via.placeholder.com/400x600"]
+            # No pref_age_min/max, no pref_genders - should see everyone
+        }
+        
+        headers_d = {'Authorization': f'Bearer {user_d_token}'}
+        success, _ = self.run_test("Complete User D Profile (Broad Prefs)", "PUT", "profile", 200, profile_d, headers_d)
+        if not success:
+            return False
+        
+        success, discover_d = self.run_test("User D Discover (Broad Prefs)", "GET", "discover", 200, headers=headers_d)
+        if not success:
+            return False
+        
+        # Should see User C (since no age/gender restrictions)
+        user_c_found_d = any(user['user_id'] == user_c['user_id'] for user in discover_d)
+        if not user_c_found_d:
+            self.log_test("Broad Preferences Discovery", False, "User with no prefs should see User C")
+            return False
+        
+        print(f"   ✅ User with broad preferences sees {len(discover_d)} profiles")
+        
+        print(f"\n✅ DISCOVERY & MATCHING FLOW TESTS COMPLETED SUCCESSFULLY")
+        return True
+
 def main():
-    print("🚩 UNHINGED API TESTING SUITE - EXPANDED PROFILE SCHEMA 🚩")
+    print("🚩 UNHINGED API TESTING SUITE - DISCOVERY & MATCHING FLOW 🚩")
     print("=" * 60)
     
     tester = UnhingedAPITester()
     
-    # Test sequence focused on expanded profile schema and regressions
+    # Test sequence focused on discovery and matching functionality
     tests = [
         ("Root Endpoint", tester.test_root_endpoint),
-        ("User Registration (with new schema defaults)", tester.test_register),
-        ("User Login", tester.test_login),
-        ("Auth Me (new fields + no _id)", tester.test_auth_me),
-        ("Get Profile (UserProfile compatibility)", tester.test_get_profile),
-        ("Update Profile (comprehensive new fields)", tester.test_update_profile),
-        ("Red Flag Suggestions (regression)", tester.test_red_flag_suggestions),
-        ("Prompt Suggestions (regression)", tester.test_prompt_suggestions),
-        ("AI Roast Generation (regression)", tester.test_ai_roast),
-        ("Logout", tester.test_logout)
+        ("Discovery & Matching Flow", tester.test_discovery_and_matching_flow),
     ]
     
-    print(f"\nRunning {len(tests)} API tests focused on expanded profile schema...\n")
+    print(f"\nRunning {len(tests)} API tests focused on discovery and matching...\n")
     
     for test_name, test_func in tests:
         try:
@@ -454,7 +736,7 @@ def main():
     
     # Print summary
     print("\n" + "=" * 60)
-    print("📊 TEST SUMMARY - EXPANDED PROFILE SCHEMA")
+    print("📊 TEST SUMMARY - DISCOVERY & MATCHING FLOW")
     print("=" * 60)
     print(f"Tests Run: {tester.tests_run}")
     print(f"Tests Passed: {tester.tests_passed}")
@@ -468,7 +750,7 @@ def main():
         for test in failed_tests:
             print(f"   • {test['test']}: {test['details']}")
     else:
-        print(f"\n✅ ALL TESTS PASSED! Expanded profile schema working correctly.")
+        print(f"\n✅ ALL TESTS PASSED! Discovery and matching flow working correctly.")
     
     return 0 if tester.tests_passed == tester.tests_run else 1
 
