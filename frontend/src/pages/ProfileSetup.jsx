@@ -600,7 +600,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
               {profile.red_flags.length > 0 && (
                 <div className="mt-4">
                   <Label className="text-slate-700 text-sm font-medium mb-2 block">Mark dealbreakers (optional)</Label>
-                  <p className="text-[#E0E0E0]/40 font-mono text-xs mb-2">These are the chaos levels you absolutely won&apos;t tolerate.</p>
+                  <p className="text-slate-500 font-mono text-xs mb-2">These are the chaos levels you absolutely won&apos;t tolerate.</p>
                   <div className="flex flex-wrap gap-2">
                     {profile.red_flags.map((flag, i) => {
                       const isDealbreaker = profile.dealbreaker_red_flags.includes(flag);
