@@ -102,9 +102,9 @@ const Settings = ({ user, setUser, logout, token }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       {/* Navigation */}
-      <nav className="border-b-2 border-white/10 bg-[#0a0a0a]">
+      <nav className="border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <Button
@@ -116,14 +116,14 @@ const Settings = ({ user, setUser, logout, token }) => {
               <ArrowLeft className="w-6 h-6" />
             </Button>
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-6 h-6 text-[#39FF14]" />
-              <span className="text-xl font-bold text-[#39FF14]">SETTINGS</span>
+              <AlertTriangle className="w-6 h-6 text-emerald-500" />
+              <span className="text-xl font-bold text-slate-900">Settings</span>
             </div>
           </div>
           <Button
             variant="ghost"
             onClick={handleLogout}
-            className="text-red-500 hover:text-red-400 hover:bg-transparent font-mono"
+            className="text-red-500 hover:text-red-600 hover:bg-red-50 font-mono"
             data-testid="logout-btn"
           >
             <LogOut className="w-5 h-5 mr-2" />
@@ -135,10 +135,10 @@ const Settings = ({ user, setUser, logout, token }) => {
       {/* Content */}
       <div className="max-w-2xl mx-auto px-4 py-8">
         {/* Profile Header */}
-        <div className="bg-[#111] border-2 border-white/20 p-6 mb-6">
+        <div className="card-soft p-6 mb-6 bg-white">
           <div className="flex items-start gap-4">
             {/* Avatar */}
-            <div className="w-24 h-24 border-2 border-[#39FF14] overflow-hidden flex-shrink-0">
+            <div className="w-24 h-24 rounded-2xl border border-[hsl(var(--border))] overflow-hidden flex-shrink-0 bg-slate-100">
               {profile.photos?.[0] || profile.picture ? (
                 <img
                   src={profile.photos?.[0] || profile.picture}
@@ -146,21 +146,21 @@ const Settings = ({ user, setUser, logout, token }) => {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-[#1a1a1a] flex items-center justify-center">
-                  <User className="w-10 h-10 text-white/20" />
+                <div className="w-full h-full bg-slate-100 flex items-center justify-center">
+                  <User className="w-10 h-10 text-slate-400" />
                 </div>
               )}
             </div>
 
             {/* Info */}
             <div className="flex-grow">
-              <h2 className="text-2xl font-bold text-[#E0E0E0]">{user?.name}</h2>
-              <p className="text-[#E0E0E0]/60 font-mono text-sm">{user?.email}</p>
+              <h2 className="text-2xl font-bold text-slate-900">{user?.name}</h2>
+              <p className="text-slate-600 font-mono text-sm">{user?.email}</p>
               {user?.location && (
-                <p className="text-[#E0E0E0]/40 font-mono text-sm mt-1">{user?.location}</p>
+                <p className="text-slate-500 font-mono text-sm mt-1">{user?.location}</p>
               )}
               <div className="mt-2">
-                <Badge className="bg-[#39FF14]/20 text-[#39FF14] border border-[#39FF14]/50 font-mono">
+                <Badge className="bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono rounded-full">
                   {user?.profile_complete ? "CHAOS CERTIFIED" : "INCOMPLETE PROFILE"}
                 </Badge>
               </div>
@@ -180,7 +180,7 @@ const Settings = ({ user, setUser, logout, token }) => {
         </div>
 
         {/* AI Roast Section */}
-        <div className="bg-[#111] border-2 border-[#FF00FF]/30 p-6 mb-6">
+        <div className="card-soft p-6 mb-6 bg-white border border-[hsl(var(--border))]">
           <h3 className="text-lg font-bold uppercase mb-2 flex items-center gap-2 text-[#FF00FF]">
             <Sparkles className="w-5 h-5" />
             GET ROASTED BY AI
