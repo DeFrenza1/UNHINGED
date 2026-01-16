@@ -757,7 +757,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                   />
                   <Button
                     onClick={addPhoto}
-                    className="bg-[#39FF14] text-black px-4 hover:bg-[#39FF14]/80 rounded-none"
+                    className="btn-soft bg-purple-500 text-white px-4 py-2 text-sm"
                     data-testid="add-photo-btn"
                   >
                     <Plus className="w-5 h-5" />
