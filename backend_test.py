@@ -556,7 +556,7 @@ class UnhingedAPITester:
             "photos": ["https://via.placeholder.com/400x600"],
             "pref_age_min": 25,
             "pref_age_max": 35,
-            "pref_genders": ["Women", "Men", "Non-binary"],
+            "pref_genders": ["Woman", "Man", "Non-binary"],  # Fixed: Use singular forms
             "relationship_type": "Casual",
             "has_kids": "No",
             "wants_kids": "Maybe"
