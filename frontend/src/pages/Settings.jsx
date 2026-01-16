@@ -181,17 +181,17 @@ const Settings = ({ user, setUser, logout, token }) => {
 
         {/* AI Roast Section */}
         <div className="card-soft p-6 mb-6 bg-white border border-[hsl(var(--border))]">
-          <h3 className="text-lg font-bold uppercase mb-2 flex items-center gap-2 text-[#FF00FF]">
-            <Sparkles className="w-5 h-5" />
-            GET ROASTED BY AI
+          <h3 className="text-lg font-bold mb-2 flex items-center gap-2 text-slate-900">
+            <Sparkles className="w-5 h-5 text-emerald-500" />
+            Get roasted by AI
           </h3>
-          <p className="text-[#E0E0E0]/60 font-mono text-sm mb-4">
-            Let our AI generate a personalized roast based on your red flags. Share it with your matches!
+          <p className="text-slate-600 font-mono text-sm mb-4">
+            Let our AI generate a personalized roast based on your red flags. Share it with your matches (if they can handle it).
           </p>
           <Button
             onClick={generateRoast}
             disabled={roastLoading}
-            className="bg-[#FF00FF] text-white font-bold uppercase px-6 hover:bg-[#FF00FF]/80 rounded-none"
+            className="btn-soft bg-emerald-500 text-white px-6 py-2 text-sm font-semibold"
             data-testid="generate-roast-btn"
           >
             {roastLoading ? (
@@ -202,7 +202,7 @@ const Settings = ({ user, setUser, logout, token }) => {
             ROAST ME
           </Button>
           {roast && (
-            <div className="mt-4 bg-[#FF00FF]/10 border border-[#FF00FF]/30 p-4 font-mono text-sm text-[#E0E0E0]">
+            <div className="mt-4 bg-emerald-50 border border-emerald-200 p-4 font-mono text-sm text-slate-800 rounded-2xl">
               &quot;{roast}&quot;
             </div>
           )}
@@ -210,50 +210,50 @@ const Settings = ({ user, setUser, logout, token }) => {
 
         {/* Edit Profile Form */}
         {editMode && (
-          <div className="bg-[#111] border-2 border-white/20 p-6 space-y-6">
-            <h3 className="text-lg font-bold uppercase mb-4 border-b-2 border-[#39FF14] pb-2 inline-block">
-              EDIT PROFILE
+          <div className="card-soft bg-white p-6 space-y-6">
+            <h3 className="text-lg font-bold mb-4 border-b border-[hsl(var(--border))] pb-2 inline-block text-slate-900">
+              Edit profile
             </h3>
 
             {/* Basic Info */}
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
-                <Label className="text-[#E0E0E0] uppercase text-sm">Name</Label>
+                <Label className="text-slate-700 text-sm font-medium">Name</Label>
                 <Input
                   value={profile.name}
                   onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                  className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full"
                   data-testid="settings-name-input"
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-[#E0E0E0] uppercase text-sm">Age</Label>
+                <Label className="text-slate-700 text-sm font-medium">Age</Label>
                 <Input
                   type="number"
                   value={profile.age}
                   onChange={(e) => setProfile({ ...profile, age: parseInt(e.target.value) || "" })}
-                  className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full"
                   data-testid="settings-age-input"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label className="text-[#E0E0E0] uppercase text-sm">Bio</Label>
+              <Label className="text-slate-700 text-sm font-medium">Bio</Label>
               <Textarea
                 value={profile.bio}
                 onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
-                className="bg-black border-2 border-white/30 min-h-[100px] font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none resize-none"
+                className="bg-white border border-[hsl(var(--border))] min-h-[100px] font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-2xl resize-none"
                 data-testid="settings-bio-input"
               />
             </div>
 
             <div className="space-y-2">
-              <Label className="text-[#E0E0E0] uppercase text-sm">Location</Label>
+              <Label className="text-slate-700 text-sm font-medium">Location</Label>
               <Input
                 value={profile.location}
                 onChange={(e) => setProfile({ ...profile, location: e.target.value })}
-                className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none"
+                className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full"
                 data-testid="settings-location-input"
               />
             </div>
