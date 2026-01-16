@@ -116,11 +116,11 @@ const Matches = ({ user, token }) => {
                 {/* Info */}
                 <div className="flex-grow min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-lg font-bold text-[#E0E0E0] truncate">
+                    <h3 className="text-lg font-bold text-slate-900 truncate">
                       {match.matched_user?.name}
                     </h3>
                     {match.matched_user?.age && (
-                      <span className="text-[#E0E0E0]/60 font-mono text-sm">
+                      <span className="text-slate-500 font-mono text-sm">
                         {match.matched_user?.age}
                       </span>
                     )}
@@ -128,7 +128,7 @@ const Matches = ({ user, token }) => {
                   
                   {/* Last message or red flags preview */}
                   {match.last_message ? (
-                    <p className="text-[#E0E0E0]/60 font-mono text-sm truncate">
+                    <p className="text-slate-500 font-mono text-sm truncate">
                       {match.last_message.sender_id === user?.user_id ? "You: " : ""}
                       {match.last_message.content}
                     </p>
@@ -137,7 +137,7 @@ const Matches = ({ user, token }) => {
                       🚩 {match.matched_user.red_flags.slice(0, 2).join(" • ")}
                     </p>
                   ) : (
-                    <p className="text-[#39FF14]/70 font-mono text-sm">
+                    <p className="text-purple-500 font-mono text-sm">
                       Start the chaos! Send a message.
                     </p>
                   )}
@@ -145,10 +145,10 @@ const Matches = ({ user, token }) => {
 
                 {/* Time & Action */}
                 <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                  <span className="text-[#E0E0E0]/40 font-mono text-xs">
+                  <span className="text-slate-400 font-mono text-xs">
                     {formatDate(match.created_at)}
                   </span>
-                  <MessageCircle className="w-5 h-5 text-[#39FF14] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <MessageCircle className="w-5 h-5 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
             ))}
