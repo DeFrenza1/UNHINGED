@@ -48,7 +48,7 @@ const Login = ({ login }) => {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <AlertTriangle className="w-10 h-10 text-emerald-500" />
+          <AlertTriangle className="w-10 h-10 text-purple-500" />
           <span className="text-3xl font-bold tracking-tighter text-slate-900">UNHINGED</span>
         </div>
 
@@ -97,7 +97,7 @@ const Login = ({ login }) => {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full btn-soft bg-emerald-500 text-white h-12 text-sm font-semibold"
+              className="w-full btn-soft bg-purple-500 text-white h-12 text-sm font-semibold"
               data-testid="login-submit-btn"
             >
               {loading ? (
@@ -147,7 +147,7 @@ const Login = ({ login }) => {
 
           <p className="text-center text-slate-600 font-mono text-sm mt-8">
             New here?{" "}
-            <Link to="/register" className="text-emerald-600 hover:underline" data-testid="register-link">
+            <Link to="/register" className="text-purple-600 hover:underline" data-testid="register-link">
               Create an account
             </Link>
           </p>

@@ -160,7 +160,7 @@ const Settings = ({ user, setUser, logout, token }) => {
                 <p className="text-slate-500 font-mono text-sm mt-1">{user?.location}</p>
               )}
               <div className="mt-2">
-                <Badge className="bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono rounded-full">
+                <Badge className="bg-purple-50 text-purple-700 border border-purple-200 font-mono rounded-full">
                   {user?.profile_complete ? "CHAOS CERTIFIED" : "INCOMPLETE PROFILE"}
                 </Badge>
               </div>
@@ -182,7 +182,7 @@ const Settings = ({ user, setUser, logout, token }) => {
         {/* AI Roast Section */}
         <div className="card-soft p-6 mb-6 bg-white border border-[hsl(var(--border))]">
           <h3 className="text-lg font-bold mb-2 flex items-center gap-2 text-slate-900">
-            <Sparkles className="w-5 h-5 text-emerald-500" />
+            <Sparkles className="w-5 h-5 text-purple-500" />
             Get roasted by AI
           </h3>
           <p className="text-slate-600 font-mono text-sm mb-4">
@@ -191,7 +191,7 @@ const Settings = ({ user, setUser, logout, token }) => {
           <Button
             onClick={generateRoast}
             disabled={roastLoading}
-            className="btn-soft bg-emerald-500 text-white px-6 py-2 text-sm font-semibold"
+            className="btn-soft bg-purple-500 text-white px-6 py-2 text-sm font-semibold"
             data-testid="generate-roast-btn"
           >
             {roastLoading ? (
@@ -202,7 +202,7 @@ const Settings = ({ user, setUser, logout, token }) => {
             ROAST ME
           </Button>
           {roast && (
-            <div className="mt-4 bg-emerald-50 border border-emerald-200 p-4 font-mono text-sm text-slate-800 rounded-2xl">
+            <div className="mt-4 bg-purple-50 border border-purple-200 p-4 font-mono text-sm text-slate-800 rounded-2xl">
               &quot;{roast}&quot;
             </div>
           )}
