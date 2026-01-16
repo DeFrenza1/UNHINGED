@@ -136,11 +136,11 @@ body::after {
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
 }
 
-/* Input focus styles */
+/* Input focus styles - softer ring */
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: #39FF14 !important;
-  box-shadow: 4px 4px 0px 0px #39FF14;
+  border-color: hsl(var(--ring)) !important;
+  box-shadow: 0 0 0 1px hsl(var(--ring));
 }
 
 /* Red flag badge */
