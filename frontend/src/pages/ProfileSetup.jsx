@@ -148,14 +148,25 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
   const saveProfile = async (showToast = true) => {
     try {
+      // Clean up empty strings and convert to null for backend validation
+      const cleanProfile = Object.fromEntries(
+        Object.entries(profile).map(([key, value]) => {
+          if (value === "" || value === undefined) {
+            return [key, null];
+          }
+          return [key, value];
+        })
+      );
+      
       // Combine city/country into location string for backward compatibility
       const payload = {
-        ...profile,
+        ...cleanProfile,
         location:
-          profile.location ||
-          [profile.city, profile.country].filter(Boolean).join(", ") ||
-          undefined,
+          cleanProfile.location ||
+          [cleanProfile.city, cleanProfile.country].filter(Boolean).join(", ") ||
+          null,
       };
+      
       const response = await axios.put(`${API}/profile`, payload, { headers });
       setUser(response.data);
       if (showToast) toast.success("Profile updated!");
