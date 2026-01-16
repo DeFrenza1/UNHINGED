@@ -33,6 +33,62 @@ const ProfileSetup = ({ user, setUser, token }) => {
     city: user?.city || "",
     country: user?.country || "",
     // Lifestyle
+  const NOMINATIM_URL = "https://nominatim.openstreetmap.org/reverse";
+
+  const handleUseLocation = () => {
+    if (!navigator.geolocation) {
+      setGeoError("Geolocation is not supported by your browser.");
+      return;
+    }
+
+    setGeoLoading(true);
+    setGeoError("");
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+          const url = `${NOMINATIM_URL}?lat=${latitude}&lon=${longitude}&format=json&zoom=10&addressdetails=1`;
+
+          const res = await fetch(url, {
+            headers: {
+              "Accept": "application/json",
+            },
+          });
+
+          if (!res.ok) {
+            throw new Error(`Location lookup failed (${res.status})`);
+          }
+
+          const data = await res.json();
+          const address = data.address || {};
+          const city = address.city || address.town || address.village || address.suburb || "";
+          const country = address.country || "";
+
+          setProfile((prev) => ({
+            ...prev,
+            city: city || prev.city,
+            country: country || prev.country,
+          }));
+        } catch (err) {
+          console.error(err);
+          setGeoError("Couldn&apos;t auto-detect your location. You can still type it manually.");
+        } finally {
+          setGeoLoading(false);
+        }
+      },
+      (error) => {
+        let msg = "Failed to get your location.";
+        if (error.code === error.PERMISSION_DENIED) {
+          msg = "Location permission denied. You can still type your city & country manually.";
+        }
+        setGeoError(msg);
+        setGeoLoading(false);
+      },
+      { timeout: 10000 }
+    );
+  };
+
     height_cm: user?.height_cm || "",
     drinking: user?.drinking || "",
     smoking: user?.smoking || "",
