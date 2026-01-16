@@ -817,7 +817,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
               <Button
                 variant="outline"
                 onClick={() => setStep(step - 1)}
-                className="border-2 border-white/30 text-[#E0E0E0] hover:bg-white/10 rounded-none"
+                className="border border-[hsl(var(--border))] text-slate-700 hover:bg-slate-100 rounded-full"
                 data-testid="profile-back-btn"
               >
                 <ChevronLeft className="w-5 h-5 mr-1" />
