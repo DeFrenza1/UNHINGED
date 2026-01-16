@@ -763,7 +763,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     <Plus className="w-5 h-5" />
                   </Button>
                 </div>
-                <p className="text-[#E0E0E0]/40 font-mono text-xs">Tip: Use image URLs from Imgur, Unsplash, or any hosting service</p>
+                <p className="text-slate-500 font-mono text-xs">Tip: Use image URLs from Imgur, Unsplash, or any hosting service</p>
               </div>
 
               {/* Worst Photo Caption */}
