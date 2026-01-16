@@ -637,7 +637,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
               {/* Suggestions */}
               <div className="space-y-2">
-                <Label className="text-[#E0E0E0] uppercase text-sm">Pick Your Poison</Label>
+                <Label className="text-slate-700 text-sm font-medium">Pick your poison</Label>
                 <div className="flex flex-wrap gap-2 max-h-[200px] overflow-y-auto p-2 border border-white/10">
                   {redFlagSuggestions.filter(f => !profile.red_flags.includes(f)).map((flag, i) => (
                     <Badge
