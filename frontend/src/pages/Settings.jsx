@@ -349,14 +349,14 @@ const Settings = ({ user, setUser, logout, token }) => {
               <Button
                 variant="outline"
                 onClick={() => setEditMode(false)}
-                className="flex-1 border-2 border-white/30 text-[#E0E0E0] hover:bg-white/10 rounded-none"
+                className="flex-1 border border-[hsl(var(--border))] text-slate-700 hover:bg-slate-100 rounded-full"
               >
                 CANCEL
               </Button>
               <Button
                 onClick={saveProfile}
                 disabled={loading}
-                className="flex-1 bg-[#39FF14] text-black font-bold hover:bg-[#39FF14]/80 rounded-none"
+                className="flex-1 btn-soft bg-purple-500 text-white font-semibold"
                 data-testid="save-profile-btn"
               >
                 {loading ? (
@@ -371,14 +371,14 @@ const Settings = ({ user, setUser, logout, token }) => {
 
         {/* Profile Preview (when not editing) */}
         {!editMode && (
-          <div className="bg-[#111] border-2 border-white/20 p-6 space-y-4">
-            <h3 className="text-lg font-bold uppercase mb-4 border-b-2 border-[#39FF14] pb-2 inline-block">
+          <div className="card-soft bg-white p-6 space-y-4">
+            <h3 className="text-lg font-bold mb-4 border-b border-[hsl(var(--border))] pb-2 inline-block text-slate-900">
               YOUR PROFILE
             </h3>
 
             {user?.bio && (
               <div>
-                <Label className="text-[#E0E0E0]/60 uppercase text-xs">Bio</Label>
+                <Label className="text-slate-500 text-xs">Bio</Label>
                 <p className="text-[#E0E0E0] font-mono">{user.bio}</p>
               </div>
             )}
