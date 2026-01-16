@@ -609,8 +609,8 @@ const ProfileSetup = ({ user, setUser, token }) => {
                           key={`deal-${i}`}
                           className={`px-3 py-1 font-mono cursor-pointer border ${
                             isDealbreaker
-                              ? "bg-red-900/80 border-red-500 text-red-100"
-                              : "bg-transparent border-white/30 text-[#E0E0E0]/70"
+                              ? "bg-red-600 border-red-500 text-white"
+                              : "bg-white border-[hsl(var(--border))] text-slate-700"
                           }`}
                           onClick={() => {
                             if (isDealbreaker) {
