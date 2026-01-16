@@ -202,7 +202,7 @@ function App() {
   const auth = useAuth();
 
   return (
-    <div className="App min-h-screen bg-[#050505]">
+    <div className="App min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       <BrowserRouter>
         <AppRouter auth={auth} />
       </BrowserRouter>
@@ -210,10 +210,12 @@ function App() {
         position="top-center"
         toastOptions={{
           style: {
-            background: '#111',
-            color: '#E0E0E0',
-            border: '2px solid #39FF14',
+            background: 'hsl(222, 28%, 13%)',
+            color: 'hsl(210, 40%, 96%)',
+            borderRadius: '9999px',
+            border: '1px solid hsl(215, 25%, 22%)',
             fontFamily: 'Space Mono, monospace',
+            boxShadow: '0 12px 30px rgba(15, 23, 42, 0.5)',
           },
         }}
       />
