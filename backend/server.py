@@ -232,7 +232,7 @@ async def get_current_user(request: Request, credentials: Optional[HTTPAuthoriza
             user = await db.users.find_one({"user_id": payload["sub"]}, {"_id": 0})
             if user:
                 return user
-        except:
+        except Exception:
             # Try as session token
             session = await db.user_sessions.find_one({"session_token": token}, {"_id": 0})
             if session:
