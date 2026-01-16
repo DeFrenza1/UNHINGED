@@ -527,6 +527,37 @@ async def discover_profiles(current_user: dict = Depends(get_current_user)):
 
     filtered: list[dict] = []
 
+    def compute_match_score(me: dict, other: dict) -> int:
+        """Simple chaos-compatibility score based on red flags and lifestyle prefs."""
+        score = 0
+
+        # Red flags: overlap + complementary chaos
+        my_flags = set((me.get("red_flags") or []))
+        other_flags = set((other.get("red_flags") or []))
+        overlap = len(my_flags & other_flags)
+        complement = len((my_flags ^ other_flags))
+        score += overlap * 3  # shared chaos
+        score += min(complement, 4)  # different chaos
+
+        # Relationship type alignment
+        if me.get("relationship_type") and other.get("relationship_type"):
+            if me["relationship_type"] == other["relationship_type"]:
+                score += 3
+
+        # Kids alignment (has/wants)
+        if me.get("wants_kids") and other.get("wants_kids"):
+            if me["wants_kids"] == other["wants_kids"]:
+                score += 2
+        if me.get("has_kids") and other.get("has_kids"):
+            if me["has_kids"] == other["has_kids"]:
+                score += 1
+
+        # Light bonus for having prompts filled out
+        if other.get("prompts"):
+            score += min(len(other["prompts"]), 3)
+
+        return score
+
     for cand in candidates:
         cand_age = cand.get("age")
         cand_gender = cand.get("gender_identity")
@@ -565,8 +596,13 @@ async def discover_profiles(current_user: dict = Depends(get_current_user)):
             if any(flag in cand_flags for flag in dealbreakers):
                 continue
 
-        filtered.append(cand)
+        # Compute compatibility score and attach for sorting
+        match_score = compute_match_score(current_user, cand)
+        enriched = {**cand, "match_score": match_score}
+        filtered.append(enriched)
 
+    # Sort by descending compatibility score
+    filtered.sort(key=lambda x: x.get("match_score", 0), reverse=True)
     return filtered
 
 @api_router.post("/swipe")
