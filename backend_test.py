@@ -563,10 +563,16 @@ class UnhingedAPITester:
         if not success:
             return False
         
+        # Debug: Print what User A sees
+        print(f"   Debug: User A sees {len(discover_a)} profiles:")
+        for user in discover_a:
+            print(f"     - {user.get('name')} (ID: {user.get('user_id')}, Age: {user.get('age')}, Gender: {user.get('gender_identity')})")
+        print(f"   Looking for User B ID: {user_b['user_id']}")
+        
         # Verify User A sees User B
         user_b_found = any(user['user_id'] == user_b['user_id'] for user in discover_a)
         if not user_b_found:
-            self.log_test("User A Discovery - Should see User B", False, "User B not found in User A's discovery")
+            self.log_test("User A Discovery - Should see User B", False, f"User B not found in User A's discovery. Found {len(discover_a)} profiles total")
             return False
         
         # Verify User A does NOT see User C (dealbreaker filter)
