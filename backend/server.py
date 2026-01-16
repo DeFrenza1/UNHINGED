@@ -55,30 +55,96 @@ class UserProfile(BaseModel):
     user_id: str
     email: str
     name: str
+    # Identity & basics
+    display_name: Optional[str] = None
     picture: Optional[str] = None
     age: Optional[int] = None
     bio: Optional[str] = None
+    gender_identity: Optional[str] = None
+    pronouns: Optional[str] = None
+    sexuality: Optional[str] = None
+    interested_in: List[str] = []
+    # Location
+    location: Optional[str] = None
+    city: Optional[str] = None
+    country: Optional[str] = None
+    # Lifestyle
+    height_cm: Optional[int] = None
+    drinking: Optional[str] = None
+    smoking: Optional[str] = None
+    cannabis: Optional[str] = None
+    drugs: Optional[str] = None
+    religion: Optional[str] = None
+    politics: Optional[str] = None
+    exercise: Optional[str] = None
+    diet: Optional[str] = None
+    has_kids: Optional[str] = None
+    wants_kids: Optional[str] = None
+    relationship_type: Optional[str] = None
+    # Red flags & prompts
     red_flags: List[str] = []
+    dealbreaker_red_flags: List[str] = []
     negative_qualities: List[str] = []
     photos: List[str] = []
     worst_photo_caption: Optional[str] = None
     prompts: List[Dict[str, str]] = []
+    # What they are looking for
     looking_for: Optional[str] = None
-    location: Optional[str] = None
+    # Match preferences
+    pref_age_min: Optional[int] = None
+    pref_age_max: Optional[int] = None
+    pref_genders: List[str] = []
+    pref_distance_km: Optional[int] = None
+    pref_wants_kids: Optional[str] = None
+    pref_relationship_type: Optional[str] = None
+    # Meta
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     profile_complete: bool = False
 
 class ProfileUpdate(BaseModel):
+    # Identity & basics
     name: Optional[str] = None
+    display_name: Optional[str] = None
     age: Optional[int] = None
     bio: Optional[str] = None
+    gender_identity: Optional[str] = None
+    pronouns: Optional[str] = None
+    sexuality: Optional[str] = None
+    interested_in: Optional[List[str]] = None
+    # Location
+    location: Optional[str] = None
+    city: Optional[str] = None
+    country: Optional[str] = None
+    # Lifestyle
+    height_cm: Optional[int] = None
+    drinking: Optional[str] = None
+    smoking: Optional[str] = None
+    cannabis: Optional[str] = None
+    drugs: Optional[str] = None
+    religion: Optional[str] = None
+    politics: Optional[str] = None
+    exercise: Optional[str] = None
+    diet: Optional[str] = None
+    has_kids: Optional[str] = None
+    wants_kids: Optional[str] = None
+    relationship_type: Optional[str] = None
+    # Red flags & prompts
     red_flags: Optional[List[str]] = None
+    dealbreaker_red_flags: Optional[List[str]] = None
     negative_qualities: Optional[List[str]] = None
     photos: Optional[List[str]] = None
     worst_photo_caption: Optional[str] = None
     prompts: Optional[List[Dict[str, str]]] = None
+    # What they are looking for
     looking_for: Optional[str] = None
-    location: Optional[str] = None
+    # Match preferences
+    pref_age_min: Optional[int] = None
+    pref_age_max: Optional[int] = None
+    pref_genders: Optional[List[str]] = None
+    pref_distance_km: Optional[int] = None
+    pref_wants_kids: Optional[str] = None
+    pref_relationship_type: Optional[str] = None
+    # Avatar
     picture: Optional[str] = None
 
 class SwipeAction(BaseModel):
