@@ -336,27 +336,54 @@ const ProfileSetup = ({ user, setUser, token }) => {
                 </div>
 
                 {/* Location */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">City</Label>
-                    <Input
-                      placeholder="City of chaos"
-                      value={profile.city}
-                      onChange={(e) => setProfile({ ...profile, city: e.target.value })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
-                      data-testid="profile-city-input"
-                    />
+                <div className="space-y-3 border-t-2 border-white/10 pt-4 mt-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <Label className="text-[#E0E0E0] uppercase text-sm">Location</Label>
+                      <p className="text-[#E0E0E0]/40 font-mono text-xs">
+                        We&apos;ll use your GPS (with permission) to guess your city &amp; country.
+                      </p>
+                    </div>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={handleUseLocation}
+                      className="border-2 border-[#39FF14] text-[#39FF14] hover:bg-[#39FF14]/10 rounded-none text-xs px-3 py-2"
+                      disabled={geoLoading}
+                      data-testid="use-location-btn"
+                    >
+                      {geoLoading ? "LOCATING..." : "USE MY LOCATION"}
+                    </Button>
                   </div>
-                  <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Country</Label>
-                    <Input
-                      placeholder="Country (optional)"
-                      value={profile.country}
-                      onChange={(e) => setProfile({ ...profile, country: e.target.value })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
-                      data-testid="profile-country-input"
-                    />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label className="text-[#E0E0E0] uppercase text-sm">City</Label>
+                      <Input
+                        placeholder="City of chaos"
+                        value={profile.city}
+                        onChange={(e) => setProfile({ ...profile, city: e.target.value })}
+                        className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                        data-testid="profile-city-input"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-[#E0E0E0] uppercase text-sm">Country</Label>
+                      <Input
+                        placeholder="Country (optional)"
+                        value={profile.country}
+                        onChange={(e) => setProfile({ ...profile, country: e.target.value })}
+                        className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                        data-testid="profile-country-input"
+                      />
+                    </div>
                   </div>
+
+                  {geoError && (
+                    <p className="text-red-400 font-mono text-xs" data-testid="geo-error">
+                      {geoError}
+                    </p>
+                  )}
                 </div>
 
                 {/* Bio */}
@@ -374,13 +401,21 @@ const ProfileSetup = ({ user, setUser, token }) => {
                 {/* Looking for */}
                 <div className="space-y-2">
                   <Label className="text-[#E0E0E0] uppercase text-sm">Looking For</Label>
-                  <Input
-                    placeholder="More chaos? Stability? A plant that survives?"
+                  <select
                     value={profile.looking_for}
                     onChange={(e) => setProfile({ ...profile, looking_for: e.target.value })}
-                    className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                    className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none px-3"
                     data-testid="profile-looking-for-input"
-                  />
+                  >
+                    <option value="">Choose your bad idea</option>
+                    <option value="chaos_only">Chaos only (no stability pls)</option>
+                    <option value="short_term">Short-term fun</option>
+                    <option value="long_term">Long-term relationship</option>
+                    <option value="open_to_anything">Open to anything</option>
+                    <option value="friends_first">Friends first</option>
+                    <option value="situationships">Situationships</option>
+                    <option value="still_figuring_it_out">Still figuring it out</option>
+                  </select>
                 </div>
 
                 {/* Lifestyle & match prefs (preview) */}
