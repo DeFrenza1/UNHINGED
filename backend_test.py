@@ -586,6 +586,7 @@ class UnhingedAPITester:
         for user in discover_a:
             print(f"     - {user.get('name')} (ID: {user.get('user_id')}, Age: {user.get('age')}, Gender: {user.get('gender_identity')})")
         print(f"   Looking for User B ID: {user_b['user_id']}")
+        print(f"   Looking for User C ID: {user_c['user_id']} (should NOT be present due to dealbreaker)")
         
         # Verify User A sees User B
         user_b_found = any(user['user_id'] == user_b['user_id'] for user in discover_a)
