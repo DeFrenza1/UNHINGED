@@ -105,7 +105,7 @@ class UnhingedAPITester:
             
         # We'll use the registered user's credentials
         # For this test, we'll create a new user and login
-        test_email = f"login_test_{uuid.uuid4().hex[:8]}@unhinged.test"
+        test_email = f"login_test_{uuid.uuid4().hex[:8]}@example.com"
         register_data = {
             "name": "Login Test User",
             "email": test_email,
