@@ -643,7 +643,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     <Badge
                       key={i}
                       variant="outline"
-                      className="border-white/30 text-[#E0E0E0]/70 px-3 py-1 font-mono cursor-pointer hover:bg-white/10 hover:border-red-500"
+                      className="border-[hsl(var(--border))] text-slate-700 px-3 py-1 font-mono cursor-pointer hover:bg-slate-100"
                       onClick={() => addRedFlag(flag)}
                     >
                       + {flag}
