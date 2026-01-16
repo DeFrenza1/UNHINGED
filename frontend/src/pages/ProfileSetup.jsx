@@ -303,20 +303,20 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     placeholder="What should we call you?"
                     value={profile.display_name}
                     onChange={(e) => setProfile({ ...profile, display_name: e.target.value })}
-                    className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                    className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                     data-testid="profile-display-name-input"
                   />
                 </div>
 
                 {/* Age */}
                 <div className="space-y-2">
-                  <Label className="text-[#E0E0E0] uppercase text-sm">Age</Label>
+                  <Label className="text-slate-700 text-sm font-medium">Age</Label>
                   <Input
                     type="number"
                     placeholder="How many years of chaos?"
                     value={profile.age}
                     onChange={(e) => setProfile({ ...profile, age: parseInt(e.target.value) || "" })}
-                    className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                    className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                     data-testid="profile-age-input"
                   />
                 </div>
@@ -324,7 +324,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                 {/* Gender & pronouns */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Gender Identity</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Gender identity</Label>
                     <select
                       value={profile.gender_identity}
                       onChange={(e) => setProfile({ ...profile, gender_identity: e.target.value })}
@@ -341,7 +341,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Pronouns</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Pronouns</Label>
                     <select
                       value={profile.pronouns}
                       onChange={(e) => setProfile({ ...profile, pronouns: e.target.value })}
@@ -362,7 +362,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                 {/* Sexuality / Interested in */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Sexuality</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Sexuality</Label>
                     <select
                       value={profile.sexuality}
                       onChange={(e) => setProfile({ ...profile, sexuality: e.target.value })}
@@ -432,7 +432,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                         placeholder="City of chaos"
                         value={profile.city}
                         onChange={(e) => setProfile({ ...profile, city: e.target.value })}
-                        className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                        className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                         data-testid="profile-city-input"
                       />
                     </div>
@@ -442,7 +442,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                         placeholder="Country (optional)"
                         value={profile.country}
                         onChange={(e) => setProfile({ ...profile, country: e.target.value })}
-                        className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                        className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                         data-testid="profile-country-input"
                       />
                     </div>
@@ -540,7 +540,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                       type="number"
                       value={profile.pref_age_min}
                       onChange={(e) => setProfile({ ...profile, pref_age_min: parseInt(e.target.value) || "" })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                      className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                     />
                   </div>
                   <div className="space-y-2">
@@ -549,7 +549,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                       type="number"
                       value={profile.pref_age_max}
                       onChange={(e) => setProfile({ ...profile, pref_age_max: parseInt(e.target.value) || "" })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                      className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                     />
                   </div>
                   <div className="space-y-2">
@@ -558,7 +558,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                       type="number"
                       value={profile.pref_distance_km}
                       onChange={(e) => setProfile({ ...profile, pref_distance_km: parseInt(e.target.value) || "" })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                      className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                     />
                   </div>
                 </div>
@@ -660,7 +660,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     placeholder="My unique disaster trait..."
                     value={customRedFlag}
                     onChange={(e) => setCustomRedFlag(e.target.value)}
-                    className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                    className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                     data-testid="custom-flag-input"
                   />
                   <Button
@@ -752,7 +752,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     placeholder="https://your-terrible-photo.jpg"
                     value={photoUrl}
                     onChange={(e) => setPhotoUrl(e.target.value)}
-                    className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                    className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                     data-testid="photo-url-input"
                   />
                   <Button
