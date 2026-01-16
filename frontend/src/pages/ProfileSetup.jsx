@@ -801,7 +801,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                         placeholder="Type your unhinged response..."
                         value={existing?.answer || ""}
                         onChange={(e) => updatePrompt(prompt.id, e.target.value)}
-                        className="bg-black border-2 border-white/30 min-h-[80px] font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none resize-none"
+                        className="bg-white border border-[hsl(var(--border))] min-h-[80px] font-mono text-slate-900 placeholder:text-slate-400 rounded-2xl resize-none"
                         data-testid={`prompt-${prompt.id}`}
                       />
                     </div>
