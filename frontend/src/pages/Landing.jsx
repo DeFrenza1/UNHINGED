@@ -64,15 +64,15 @@ const Landing = () => {
               ANTI-DATING APP
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase mb-6 leading-none">
-              <span className="text-[#E0E0E0]">EMBRACE</span>
-              <br />
-              <span className="text-[#39FF14] neon-text">YOUR CHAOS</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight text-slate-900">
+              <span className="block">IF YOU CAN&apos;T HANDLE</span>
+              <span className="block text-emerald-500">MY WORST RED FLAGS</span>
+              <span className="block text-slate-700 text-2xl md:text-3xl mt-2">YOU DON&apos;T DESERVE MY SLIGHTLY BETTER SELFIES</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-[#E0E0E0]/70 font-mono mb-10 max-w-2xl mx-auto">
-              The dating app where your red flags are features, not bugs. 
-              Match with people who appreciate your beautiful disaster energy.
+            <p className="text-lg md:text-xl text-slate-600 font-mono mb-10 max-w-2xl mx-auto">
+              The dating app where your red flags are features, not bugs.
+              Match with people who like you messy and still show up for your best.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
