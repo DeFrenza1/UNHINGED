@@ -19,15 +19,48 @@ const ProfileSetup = ({ user, setUser, token }) => {
   const [promptSuggestions, setPromptSuggestions] = useState([]);
   
   const [profile, setProfile] = useState({
+    // Identity & basics
+    name: user?.name || "",
+    display_name: user?.display_name || user?.name || "",
     age: user?.age || "",
     bio: user?.bio || "",
+    gender_identity: user?.gender_identity || "",
+    pronouns: user?.pronouns || "",
+    sexuality: user?.sexuality || "",
+    interested_in: user?.interested_in || [],
+    // Location
     location: user?.location || "",
-    looking_for: user?.looking_for || "",
+    city: user?.city || "",
+    country: user?.country || "",
+    // Lifestyle
+    height_cm: user?.height_cm || "",
+    drinking: user?.drinking || "",
+    smoking: user?.smoking || "",
+    cannabis: user?.cannabis || "",
+    drugs: user?.drugs || "",
+    religion: user?.religion || "",
+    politics: user?.politics || "",
+    exercise: user?.exercise || "",
+    diet: user?.diet || "",
+    has_kids: user?.has_kids || "",
+    wants_kids: user?.wants_kids || "",
+    relationship_type: user?.relationship_type || "",
+    // Red flags & prompts
     red_flags: user?.red_flags || [],
+    dealbreaker_red_flags: user?.dealbreaker_red_flags || [],
     negative_qualities: user?.negative_qualities || [],
     photos: user?.photos || [],
     worst_photo_caption: user?.worst_photo_caption || "",
-    prompts: user?.prompts || []
+    prompts: user?.prompts || [],
+    // What they are looking for
+    looking_for: user?.looking_for || "",
+    // Match preferences
+    pref_age_min: user?.pref_age_min || "",
+    pref_age_max: user?.pref_age_max || "",
+    pref_genders: user?.pref_genders || [],
+    pref_distance_km: user?.pref_distance_km || "",
+    pref_wants_kids: user?.pref_wants_kids || "",
+    pref_relationship_type: user?.pref_relationship_type || "",
   });
 
   const [customRedFlag, setCustomRedFlag] = useState("");
