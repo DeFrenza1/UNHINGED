@@ -163,6 +163,13 @@ def main():
     })
     
     # Open user should see users with complete profiles
+    print(f"   Debug: Open user should see young_user ({young_user['user_id']}), old_user ({old_user['user_id']}), picky_user ({picky_user['user_id']})")
+    headers = {'Authorization': f'Bearer {open_user["token"]}'}
+    response = requests.get(f"{api_url}/discover", headers=headers)
+    profiles = response.json()
+    found_users = [p.get('name') for p in profiles]
+    print(f"   Open user actually sees: {found_users}")
+    
     if not test_discovery(open_user, should_see=[young_user, old_user, picky_user]):
         return False
     
