@@ -255,12 +255,12 @@ const ProfileSetup = ({ user, setUser, token }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] py-8 px-4">
+    <div className="min-h-screen bg-[hsl(var(--background))] py-8 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <AlertTriangle className="w-8 h-8 text-[#39FF14]" />
-          <span className="text-2xl font-bold tracking-tighter text-[#39FF14]">UNHINGED</span>
+          <AlertTriangle className="w-8 h-8 text-emerald-500" />
+          <span className="text-2xl font-bold tracking-tighter text-slate-900">UNHINGED</span>
         </div>
 
         {/* Progress */}
@@ -286,13 +286,13 @@ const ProfileSetup = ({ user, setUser, token }) => {
         </div>
 
         {/* Step Content */}
-        <div className="bg-[#111] border-2 border-white/20 p-6 md:p-8">
+        <div className="card-soft p-6 md:p-8">
           {/* Step 1: Basic Info */}
           {step === 1 && (
             <div className="space-y-6">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold uppercase mb-2">THE BASICS</h2>
-                <p className="text-[#E0E0E0]/60 font-mono text-sm">Don&apos;t worry, it only gets worse from here.</p>
+                <h2 className="text-2xl font-bold mb-2 text-slate-900">The basics</h2>
+                <p className="text-slate-600 font-mono text-sm">A few details so we can find people who can handle your worst.</p>
               </div>
 
               <div className="space-y-4">

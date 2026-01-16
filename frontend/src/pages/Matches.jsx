@@ -42,26 +42,26 @@ const Matches = ({ user, token }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       {/* Navigation */}
-      <nav className="border-b-2 border-white/10 bg-[#0a0a0a]">
+      <nav className="border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => navigate("/discover")}
-              className="text-[#E0E0E0] hover:text-[#39FF14] hover:bg-transparent"
+              className="text-slate-600 hover:text-slate-900 hover:bg-slate-100"
             >
               <ArrowLeft className="w-6 h-6" />
             </Button>
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-6 h-6 text-[#39FF14]" />
-              <span className="text-xl font-bold text-[#39FF14]">MATCHES</span>
+              <AlertTriangle className="w-6 h-6 text-emerald-500" />
+              <span className="text-xl font-bold text-slate-900">Matches</span>
             </div>
           </div>
-          <div className="text-[#E0E0E0]/60 font-mono text-sm">
-            {matches.length} disasters matched
+          <div className="text-slate-500 font-mono text-sm">
+            {matches.length} matches
           </div>
         </div>
       </nav>
@@ -70,19 +70,19 @@ const Matches = ({ user, token }) => {
       <div className="max-w-2xl mx-auto px-4 py-8">
         {loading ? (
           <div className="flex flex-col items-center justify-center h-[60vh]">
-            <Loader2 className="w-12 h-12 text-[#39FF14] animate-spin mb-4" />
-            <p className="text-[#E0E0E0]/60 font-mono">Loading your chaos connections...</p>
+            <Loader2 className="w-12 h-12 text-emerald-500 animate-spin mb-4" />
+            <p className="text-slate-500 font-mono">Loading your matches...</p>
           </div>
         ) : matches.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-            <Heart className="w-16 h-16 text-[#FF00FF]/50 mb-4" />
-            <h2 className="text-2xl font-bold uppercase mb-2">NO MATCHES YET</h2>
-            <p className="text-[#E0E0E0]/60 font-mono mb-6 max-w-md">
-              Your chaos energy hasn&apos;t connected with anyone yet. Keep swiping!
+            <Heart className="w-16 h-16 text-emerald-400 mb-4" />
+            <h2 className="text-2xl font-bold mb-2 text-slate-900">No matches yet</h2>
+            <p className="text-slate-500 font-mono mb-6 max-w-md">
+              Keep swiping in Discover to find people who can handle your red flags.
             </p>
             <Button
               onClick={() => navigate("/discover")}
-              className="bg-[#39FF14] text-black font-bold uppercase px-6 py-2 hover:bg-[#39FF14]/80 rounded-none"
+              className="btn-soft bg-emerald-500 text-white px-6 py-2 text-sm font-semibold"
               data-testid="back-to-discover-btn"
             >
               <Users className="w-5 h-5 mr-2" />
@@ -95,11 +95,11 @@ const Matches = ({ user, token }) => {
               <div
                 key={match.match_id}
                 onClick={() => navigate(`/chat/${match.match_id}`)}
-                className="bg-[#111] border-2 border-white/20 p-4 flex items-center gap-4 cursor-pointer hover:border-[#39FF14] transition-colors group"
+                className="card-soft p-4 flex items-center gap-4 cursor-pointer group"
                 data-testid={`match-${match.match_id}`}
               >
                 {/* Avatar */}
-                <div className="w-16 h-16 border-2 border-white/20 overflow-hidden flex-shrink-0 group-hover:border-[#39FF14] transition-colors">
+                <div className="w-16 h-16 rounded-2xl border border-[hsl(var(--border))] overflow-hidden flex-shrink-0">
                   {match.matched_user?.photos?.[0] || match.matched_user?.picture ? (
                     <img
                       src={match.matched_user?.photos?.[0] || match.matched_user?.picture}
