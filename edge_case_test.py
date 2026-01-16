@@ -113,7 +113,13 @@ def main():
     
     # Young user should see old user (no age prefs restrict it)
     # Old user should see young user (20 is within 18-22 range)
+    print(f"   Debug: Young user (20F, wants Men) vs Old user (40M, wants Women 18-22)")
     if not test_discovery(young_user, should_see=[old_user]):
+        # Debug the issue
+        headers = {'Authorization': f'Bearer {young_user["token"]}'}
+        response = requests.get(f"{api_url}/discover", headers=headers)
+        profiles = response.json()
+        print(f"   Young user actually sees: {[p.get('name') for p in profiles]}")
         return False
     if not test_discovery(old_user, should_see=[young_user]):
         return False
