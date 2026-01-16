@@ -81,10 +81,10 @@ class UnhingedAPITester:
         return self.run_test("Root API", "GET", "", 200)
 
     def test_register(self):
-        """Test user registration"""
+        """Test user registration with expanded profile schema"""
         test_email = f"test_{uuid.uuid4().hex[:8]}@example.com"
         test_data = {
-            "name": "Test Chaos User",
+            "name": "Alex Chaos",
             "email": test_email,
             "password": "TestPass123!"
         }
@@ -95,6 +95,35 @@ class UnhingedAPITester:
             self.token = response['access_token']
             self.user_id = response['user']['user_id']
             print(f"   Token obtained: {self.token[:20]}...")
+            
+            # Verify new profile fields have sane defaults
+            user = response.get('user', {})
+            expected_defaults = {
+                'gender_identity': None,
+                'pronouns': None,
+                'sexuality': None,
+                'interested_in': [],
+                'city': None,
+                'country': None,
+                'drinking': None,
+                'smoking': None,
+                'exercise': None,
+                'pref_age_min': None,
+                'pref_age_max': None,
+                'pref_genders': [],
+                'pref_distance_km': None,
+                'dealbreaker_red_flags': []
+            }
+            
+            for field, expected_value in expected_defaults.items():
+                actual_value = user.get(field)
+                if actual_value != expected_value:
+                    self.log_test(f"Registration Default - {field}", False, 
+                                f"Expected {expected_value}, got {actual_value}")
+                    return False
+                else:
+                    print(f"   ✓ {field}: {actual_value}")
+            
             return True
         return False
 
