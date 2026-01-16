@@ -114,13 +114,13 @@ const Landing = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900">
             How Unhinged works
           </h2>
-          <p className="text-slate-600 font-mono mb-12">(Spoiler: it&apos;s still a beautiful disaster, just with better UX.)</p>
+          <p className="text-slate-600 font-mono mb-12">Three quick steps to meeting people who get your chaos.</p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="card-soft p-6 text-left bg-white"
+                className="rounded-2xl border border-[hsl(var(--border))] bg-white p-6 shadow-sm text-left"
                 data-testid={`feature-card-${index}`}
               >
                 <div className="text-emerald-500 mb-4">
@@ -139,10 +139,10 @@ const Landing = () => {
       </section>
 
       {/* Red Flags Preview */}
-      <section className="py-20 bg-[hsl(var(--muted))]">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center text-slate-900">
-            Popular red flags (and why we love them)
+            Some red flags you&apos;ll see on Unhinged
           </h2>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -158,8 +158,7 @@ const Landing = () => {
             ].map((flag, i) => (
               <div
                 key={i}
-                className="red-flag-badge hover:bg-red-800/30 transition-colors cursor-default"
-                style={{ transform: `rotate(${(i % 3 - 1) * 2}deg)` }}
+                className="bg-rose-100 border border-rose-200 px-3 py-1 text-rose-800 text-sm font-mono rounded-full cursor-default"
               >
                 🚩 {flag}
               </div>
