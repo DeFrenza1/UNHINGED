@@ -87,7 +87,7 @@ const Discover = ({ user, token }) => {
       <nav className="border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/discover")}>
-            <AlertTriangle className="w-6 h-6 text-emerald-500" />
+            <AlertTriangle className="w-6 h-6 text-purple-500" />
             <span className="text-xl font-bold text-slate-900">UNHINGED</span>
           </div>
           <div className="flex items-center gap-4">
@@ -95,7 +95,7 @@ const Discover = ({ user, token }) => {
               variant="ghost"
               size="icon"
               onClick={() => navigate("/matches")}
-              className="text-slate-600 hover:text-emerald-500 hover:bg-emerald-50 relative"
+              className="text-slate-600 hover:text-purple-500 hover:bg-purple-50 relative"
               data-testid="nav-matches-btn"
             >
               <Users className="w-6 h-6" />
@@ -117,19 +117,19 @@ const Discover = ({ user, token }) => {
       <div className="max-w-lg mx-auto px-4 py-8">
         {loading ? (
           <div className="flex flex-col items-center justify-center h-[60vh]">
-            <Loader2 className="w-12 h-12 text-emerald-500 animate-spin mb-4" />
+            <Loader2 className="w-12 h-12 text-purple-500 animate-spin mb-4" />
             <p className="text-slate-500 font-mono">Finding people who match your flavor of chaos...</p>
           </div>
         ) : profiles.length === 0 || currentIndex >= profiles.length ? (
           <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-            <Flag className="w-16 h-16 text-emerald-400 mb-4" />
+            <Flag className="w-16 h-16 text-purple-400 mb-4" />
             <h2 className="text-2xl font-bold mb-2 text-slate-900">You&apos;re all caught up</h2>
             <p className="text-slate-500 font-mono mb-6">
               You&apos;ve seen everyone for now. Check back soon for more beautifully flawed humans.
             </p>
             <Button
               onClick={fetchProfiles}
-              className="btn-soft bg-emerald-500 text-white px-6 py-2 text-sm font-semibold"
+              className="btn-soft bg-purple-500 text-white px-6 py-2 text-sm font-semibold"
               data-testid="refresh-profiles-btn"
             >
               <RefreshCw className="w-5 h-5 mr-2" />

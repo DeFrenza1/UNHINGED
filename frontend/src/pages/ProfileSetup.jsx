@@ -259,7 +259,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <AlertTriangle className="w-8 h-8 text-emerald-500" />
+          <AlertTriangle className="w-8 h-8 text-purple-500" />
           <span className="text-2xl font-bold tracking-tighter text-slate-900">UNHINGED</span>
         </div>
 

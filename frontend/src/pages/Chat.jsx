@@ -169,12 +169,12 @@ const Chat = ({ user, token }) => {
         <div className="max-w-2xl mx-auto">
           {loading ? (
             <div className="flex flex-col items-center justify-center h-full py-20">
-              <Loader2 className="w-8 h-8 text-emerald-500 animate-spin mb-4" />
+              <Loader2 className="w-8 h-8 text-purple-500 animate-spin mb-4" />
               <p className="text-slate-500 font-mono text-sm">Loading your chat...</p>
             </div>
           ) : messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <AlertTriangle className="w-12 h-12 text-emerald-400 mb-4" />
+              <AlertTriangle className="w-12 h-12 text-purple-400 mb-4" />
               <h3 className="text-xl font-bold mb-2 text-slate-900">Say hi</h3>
               <p className="text-slate-500 font-mono text-sm mb-6 max-w-sm">
                 You matched! Break the ice with something a little unhinged (or let AI help).
@@ -182,7 +182,7 @@ const Chat = ({ user, token }) => {
               <Button
                 onClick={generateIcebreaker}
                 disabled={generatingIcebreaker}
-                className="btn-soft bg-emerald-500 text-white px-6 py-2 text-sm font-semibold"
+                className="btn-soft bg-purple-500 text-white px-6 py-2 text-sm font-semibold"
                 data-testid="generate-icebreaker-btn"
               >
                 {generatingIcebreaker ? (

@@ -116,7 +116,7 @@ const Settings = ({ user, setUser, logout, token }) => {
               <ArrowLeft className="w-6 h-6" />
             </Button>
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-6 h-6 text-emerald-500" />
+              <AlertTriangle className="w-6 h-6 text-purple-500" />
               <span className="text-xl font-bold text-slate-900">Settings</span>
             </div>
           </div>
