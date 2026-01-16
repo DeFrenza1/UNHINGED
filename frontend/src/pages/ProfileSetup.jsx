@@ -392,7 +392,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                           pref_genders: Array.from(e.target.selectedOptions, (o) => o.value),
                         })
                       }
-                      className="bg-black border-2 border-white/30 min-h-[3rem] font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none px-3"
+                      className="bg-white border border-[hsl(var(--border))] min-h-[3rem] font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-2xl px-3"
                       data-testid="profile-interested-in-input"
                     >
                       <option value="woman">Women</option>
