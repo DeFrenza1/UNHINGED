@@ -111,7 +111,7 @@ const Settings = ({ user, setUser, logout, token }) => {
               variant="ghost"
               size="icon"
               onClick={() => navigate("/discover")}
-              className="text-[#E0E0E0] hover:text-[#39FF14] hover:bg-transparent"
+              className="text-slate-600 hover:text-purple-500 hover:bg-purple-50"
             >
               <ArrowLeft className="w-6 h-6" />
             </Button>
@@ -171,7 +171,7 @@ const Settings = ({ user, setUser, logout, token }) => {
               variant="outline"
               size="icon"
               onClick={() => setEditMode(!editMode)}
-              className="border-2 border-white/30 text-[#E0E0E0] hover:bg-white/10 rounded-none"
+              className="border border-[hsl(var(--border))] text-slate-700 hover:bg-slate-100 rounded-full"
               data-testid="edit-profile-btn"
             >
               <Edit2 className="w-5 h-5" />
@@ -277,7 +277,7 @@ const Settings = ({ user, setUser, logout, token }) => {
                   value={newFlag}
                   onChange={(e) => setNewFlag(e.target.value)}
                   placeholder="Add new red flag..."
-                  className="bg-black border-2 border-white/30 h-10 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] h-10 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full"
                 />
                 <Button onClick={addFlag} className="bg-red-600 text-white px-3 hover:bg-red-700 rounded-none">
                   <Plus className="w-4 h-4" />
@@ -304,7 +304,7 @@ const Settings = ({ user, setUser, logout, token }) => {
                   value={newQuality}
                   onChange={(e) => setNewQuality(e.target.value)}
                   placeholder="Add negative quality..."
-                  className="bg-black border-2 border-white/30 h-10 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] h-10 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full"
                 />
                 <Button onClick={addQuality} className="bg-[#FF00FF] text-white px-3 hover:bg-[#FF00FF]/80 rounded-none">
                   <Plus className="w-4 h-4" />
@@ -314,7 +314,7 @@ const Settings = ({ user, setUser, logout, token }) => {
 
             {/* Photos */}
             <div className="space-y-3">
-              <Label className="text-[#E0E0E0] uppercase text-sm flex items-center gap-2">
+              <Label className="text-slate-700 text-sm font-medium flex items-center gap-2">
                 <Camera className="w-4 h-4" />
                 Photos
               </Label>
@@ -336,9 +336,9 @@ const Settings = ({ user, setUser, logout, token }) => {
                   value={newPhoto}
                   onChange={(e) => setNewPhoto(e.target.value)}
                   placeholder="Photo URL..."
-                  className="bg-black border-2 border-white/30 h-10 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] h-10 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full"
                 />
-                <Button onClick={addPhoto} className="bg-[#39FF14] text-black px-3 hover:bg-[#39FF14]/80 rounded-none">
+                <Button onClick={addPhoto} className="btn-soft bg-purple-500 text-white px-3 py-2 text-xs">
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
