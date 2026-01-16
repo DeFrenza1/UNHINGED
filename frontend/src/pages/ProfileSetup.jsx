@@ -382,7 +382,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Interested In</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Interested in</Label>
                     <select
                       multiple
                       value={profile.pref_genders}
@@ -400,7 +400,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                       <option value="non-binary">Non-binary people</option>
                       <option value="everyone">Everyone</option>
                     </select>
-                    <p className="text-[#E0E0E0]/40 font-mono text-xs">Tip: Hold Ctrl / Cmd to select multiple</p>
+                    <p className="text-slate-500 font-mono text-xs">Tip: Hold Ctrl / Cmd to select multiple</p>
                   </div>
                 </div>
 
@@ -408,8 +408,8 @@ const ProfileSetup = ({ user, setUser, token }) => {
                 <div className="space-y-3 border-t-2 border-white/10 pt-4 mt-4">
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <Label className="text-[#E0E0E0] uppercase text-sm">Location</Label>
-                      <p className="text-[#E0E0E0]/40 font-mono text-xs">
+                      <Label className="text-slate-700 text-sm font-medium">Location</Label>
+                      <p className="text-slate-500 font-mono text-xs">
                         We&apos;ll use your GPS (with permission) to guess your city &amp; country.
                       </p>
                     </div>
@@ -417,7 +417,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                       type="button"
                       variant="outline"
                       onClick={handleUseLocation}
-                      className="border-2 border-[#39FF14] text-[#39FF14] hover:bg-[#39FF14]/10 rounded-none text-xs px-3 py-2"
+                      className="border border-purple-500 text-purple-600 hover:bg-purple-50 rounded-full text-xs px-3 py-2"
                       disabled={geoLoading}
                       data-testid="use-location-btn"
                     >
