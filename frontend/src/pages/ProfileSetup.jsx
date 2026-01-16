@@ -285,7 +285,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                       <option value="they/them">they/them</option>
                       <option value="she/they">she/they</option>
                       <option value="he/they">he/they</option>
-                      <option value="custom">It's complicated</option>
+                      <option value="custom">It&apos;s complicated</option>
                     </select>
                   </div>
                 </div>
