@@ -720,7 +720,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                   <Camera className="w-6 h-6 text-purple-500" />
                   YOUR WORST PHOTOS
                 </h2>
-                <p className="text-[#E0E0E0]/60 font-mono text-sm">Bad lighting? Double chin? Perfect. Show us your real self.</p>
+                <p className="text-slate-600 font-mono text-sm">Bad lighting? Double chin? Perfect. Show us your real self.</p>
               </div>
 
               {/* Photo Grid */}
