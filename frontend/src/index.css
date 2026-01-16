@@ -169,7 +169,7 @@ input:focus, textarea:focus, select:focus {
 
 /* Chat bubbles */
 .chat-bubble-me {
-  @apply bg-emerald-500 text-white p-3 max-w-[80%] self-end font-mono rounded-2xl rounded-br-sm;
+  @apply bg-purple-500 text-white p-3 max-w-[80%] self-end font-mono rounded-2xl rounded-br-sm;
 }
 
 .chat-bubble-them {
