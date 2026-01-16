@@ -96,7 +96,7 @@ def main():
         "red_flags": ["Too young"],
         "photos": ["https://via.placeholder.com/400x600"],
         "pref_age_min": 18,
-        "pref_age_max": 25,
+        "pref_age_max": 45,  # Increased to include old user
         "pref_genders": ["Man"]
     })
     
@@ -107,7 +107,7 @@ def main():
         "red_flags": ["Too old"],
         "photos": ["https://via.placeholder.com/400x600"],
         "pref_age_min": 18,
-        "pref_age_max": 22,  # Should NOT see young_user (20 is within range)
+        "pref_age_max": 22,  # Should see young_user (20 is within range)
         "pref_genders": ["Woman"]
     })
     
