@@ -727,26 +727,41 @@ async def get_matches(current_user: dict = Depends(get_current_user)):
     matches = await db.matches.find({
         "$or": [{"user1_id": user_id}, {"user2_id": user_id}]
     }, {"_id": 0}).to_list(100)
-    
+
+    if not matches:
+        return []
+
+    # Collect all other_user_ids to avoid N+1 lookups
+    other_ids = [
+        m["user2_id"] if m["user1_id"] == user_id else m["user1_id"]
+        for m in matches
+    ]
+
+    users = await db.users.find(
+        {"user_id": {"$in": other_ids}},
+        {"_id": 0, "password_hash": 0}
+    ).to_list(len(other_ids))
+    user_map = {u["user_id"]: u for u in users}
+
     result = []
     for match in matches:
         other_user_id = match["user2_id"] if match["user1_id"] == user_id else match["user1_id"]
-        other_user = await db.users.find_one({"user_id": other_user_id}, {"_id": 0, "password_hash": 0})
-        
+        other_user = user_map.get(other_user_id)
+
         # Get last message
         last_msg = await db.messages.find_one(
             {"match_id": match["match_id"]},
             {"_id": 0},
             sort=[("created_at", -1)]
         )
-        
+
         result.append({
             "match_id": match["match_id"],
             "matched_user": other_user,
             "created_at": match["created_at"],
             "last_message": last_msg
         })
-    
+
     return result
 
 @api_router.get("/matches/{match_id}/messages")
