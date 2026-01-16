@@ -43,7 +43,7 @@ const Landing = () => {
           {/* Nav */}
           <nav className="flex justify-between items-center mb-16">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-8 h-8 text-emerald-500" />
+              <AlertTriangle className="w-8 h-8 text-purple-500" />
               <span className="text-2xl font-bold tracking-tighter text-slate-900">UNHINGED</span>
             </div>
             <div className="flex gap-4">
@@ -66,7 +66,7 @@ const Landing = () => {
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight text-slate-900">
               <span className="block">If they can handle you at your worst,</span>
-              <span className="block text-emerald-500">you deserve their best.</span>
+              <span className="block text-purple-500">you deserve their best.</span>
             </h1>
             
             <p className="text-lg md:text-xl text-slate-600 font-mono mb-10 max-w-2xl mx-auto">
@@ -76,7 +76,7 @@ const Landing = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                className="btn-soft bg-emerald-500 text-white px-10 py-4 text-base"
+                className="btn-soft bg-purple-500 text-white px-10 py-4 text-base"
                 onClick={() => navigate("/register")}
                 data-testid="cta-enter-chaos-btn"
               >
@@ -89,7 +89,7 @@ const Landing = () => {
                 onClick={() => navigate("/login")}
                 data-testid="cta-make-mistake-btn"
               >
-                <Zap className="w-5 h-5 mr-2 text-emerald-500" />
+                <Zap className="w-5 h-5 mr-2 text-purple-500" />
                 I already have an account
               </Button>
             </div>
@@ -123,7 +123,7 @@ const Landing = () => {
                 className="rounded-2xl border border-[hsl(var(--border))] bg-white p-6 shadow-sm text-left"
                 data-testid={`feature-card-${index}`}
               >
-                <div className="text-emerald-500 mb-4">
+                <div className="text-purple-500 mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-slate-900">

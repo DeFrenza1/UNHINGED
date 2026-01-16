@@ -11,9 +11,9 @@
   --card-foreground: 222 47% 11%;
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
-  --primary: 160 84% 39%;
+  --primary: 271 91% 65%;
   --primary-foreground: 210 40% 98%;
-  --secondary: 199 89% 48%;
+  --secondary: 259 94% 61%;
   --secondary-foreground: 210 40% 98%;
   --muted: 210 40% 96%;
   --muted-foreground: 215 20% 40%;
@@ -23,7 +23,7 @@
   --destructive-foreground: 210 40% 98%;
   --border: 214 32% 91%;
   --input: 214 32% 91%;
-  --ring: 160 84% 39%;
+  --ring: 271 91% 65%;
   --radius: 0.75rem;
 }
 
@@ -65,18 +65,18 @@ body::after {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #39FF14;
+  background: #8b5cf6;
   border: 1px solid #000;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF00FF;
+  background: #a855f7;
 }
 
 /* Selection */
 ::selection {
-  background: #39FF14;
-  color: #000;
+  background: #8b5cf6;
+  color: #fff;
 }
 
 /* Glitch animation */
