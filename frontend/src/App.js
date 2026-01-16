@@ -151,8 +151,8 @@ function AppRouter({ auth }) {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/login" element={user ? <Navigate to="/discover" replace /> : <Login login={login} />} />
-      <Route path="/register" element={user ? <Navigate to="/discover" replace /> : <Register login={login} />} />
+      <Route path="/login" element={user ? (user.profile_complete ? <Navigate to="/discover" replace /> : <Navigate to="/profile-setup" replace />) : <Login login={login} />} />
+      <Route path="/register" element={user ? (user.profile_complete ? <Navigate to="/discover" replace /> : <Navigate to="/profile-setup" replace />) : <Register login={login} />} />
       <Route
         path="/profile-setup"
         element={
