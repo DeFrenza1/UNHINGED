@@ -535,7 +535,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                 {/* Match age range */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-[hsl(var(--border))] pt-4 mt-4">
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Pref Age Min</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Pref age min</Label>
                     <Input
                       type="number"
                       value={profile.pref_age_min}
@@ -544,7 +544,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Pref Age Max</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Pref age max</Label>
                     <Input
                       type="number"
                       value={profile.pref_age_max}
@@ -553,7 +553,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Max Distance (km)</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Max distance (km)</Label>
                     <Input
                       type="number"
                       value={profile.pref_distance_km}
@@ -574,7 +574,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                   <Flag className="w-6 h-6 text-red-500" />
                   YOUR RED FLAGS
                 </h2>
-                <p className="text-[#E0E0E0]/60 font-mono text-sm">Select all that apply. We&apos;re not judging. Okay, we are.</p>
+                <p className="text-slate-600 font-mono text-sm">Select all that apply. We&apos;re not judging. Okay, we are.</p>
               </div>
 
               {/* Selected Red Flags */}
@@ -773,7 +773,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                   placeholder="The story behind your most chaotic pic..."
                   value={profile.worst_photo_caption}
                   onChange={(e) => setProfile({ ...profile, worst_photo_caption: e.target.value })}
-                  className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                   data-testid="photo-caption-input"
                 />
               </div>
