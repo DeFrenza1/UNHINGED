@@ -82,7 +82,7 @@ const Discover = ({ user, token }) => {
   const currentProfile = profiles[currentIndex];
 
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       {/* Navigation */}
       <nav className="border-b-2 border-white/10 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">

@@ -29,7 +29,7 @@ const Landing = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#E0E0E0] overflow-hidden">
+    <div className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-hidden">
       {/* Hero Section */}
       <div className="relative">
         {/* Animated background elements */}
