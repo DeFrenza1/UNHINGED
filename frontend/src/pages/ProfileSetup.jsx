@@ -768,7 +768,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
               {/* Worst Photo Caption */}
               <div className="space-y-2">
-                <Label className="text-[#E0E0E0] uppercase text-sm">Caption Your Worst Photo</Label>
+                <Label className="text-slate-700 text-sm font-medium">Caption your worst photo</Label>
                 <Input
                   placeholder="The story behind your most chaotic pic..."
                   value={profile.worst_photo_caption}
