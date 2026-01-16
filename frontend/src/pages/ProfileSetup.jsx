@@ -90,7 +90,15 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
   const saveProfile = async (showToast = true) => {
     try {
-      const response = await axios.put(`${API}/profile`, profile, { headers });
+      // Combine city/country into location string for backward compatibility
+      const payload = {
+        ...profile,
+        location:
+          profile.location ||
+          [profile.city, profile.country].filter(Boolean).join(", ") ||
+          undefined,
+      };
+      const response = await axios.put(`${API}/profile`, payload, { headers });
       setUser(response.data);
       if (showToast) toast.success("Profile updated!");
       return response.data;
