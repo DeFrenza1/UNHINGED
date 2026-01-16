@@ -427,7 +427,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-[#E0E0E0] uppercase text-sm">City</Label>
+                      <Label className="text-slate-700 text-sm font-medium">City</Label>
                       <Input
                         placeholder="City of chaos"
                         value={profile.city}
@@ -437,7 +437,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-[#E0E0E0] uppercase text-sm">Country</Label>
+                      <Label className="text-slate-700 text-sm font-medium">Country</Label>
                       <Input
                         placeholder="Country (optional)"
                         value={profile.country}
@@ -457,7 +457,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
                 {/* Bio */}
                 <div className="space-y-2">
-                  <Label className="text-[#E0E0E0] uppercase text-sm">Bio (Be Honest)</Label>
+                  <Label className="text-slate-700 text-sm font-medium">Bio (be honest)</Label>
                   <Textarea
                     placeholder="Describe your disaster energy in 3 sentences or less..."
                     value={profile.bio}
@@ -469,7 +469,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
                 {/* Looking for */}
                 <div className="space-y-2">
-                  <Label className="text-[#E0E0E0] uppercase text-sm">Looking For</Label>
+                  <Label className="text-slate-700 text-sm font-medium">Looking for</Label>
                   <select
                     value={profile.looking_for}
                     onChange={(e) => setProfile({ ...profile, looking_for: e.target.value })}
