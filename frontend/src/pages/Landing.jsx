@@ -41,10 +41,10 @@ const Landing = () => {
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-20 relative z-10">
           {/* Nav */}
-          <nav className="flex justify-between items-center mb-20">
+          <nav className="flex justify-between items-center mb-16">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-8 h-8 text-[#39FF14]" />
-              <span className="text-2xl font-bold tracking-tighter text-[#39FF14]">UNHINGED</span>
+              <AlertTriangle className="w-8 h-8 text-emerald-500" />
+              <span className="text-2xl font-bold tracking-tighter text-slate-900">UNHINGED</span>
             </div>
             <div className="flex gap-4">
               <Button
@@ -77,21 +77,21 @@ const Landing = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                className="bg-[#39FF14] text-black font-bold uppercase px-10 py-6 text-lg border-2 border-[#39FF14] hover:bg-black hover:text-[#39FF14] transition-all btn-brutal"
+                className="btn-soft bg-emerald-500 text-white px-10 py-4 text-base"
                 onClick={() => navigate("/register")}
                 data-testid="cta-enter-chaos-btn"
               >
                 <Skull className="w-5 h-5 mr-2" />
-                ENTER THE CHAOS
+                Start your disaster arc
               </Button>
               <Button
                 variant="outline"
-                className="bg-transparent text-[#FF00FF] border-2 border-[#FF00FF] font-bold uppercase px-10 py-6 text-lg hover:bg-[#FF00FF] hover:text-black transition-all btn-brutal"
+                className="btn-soft bg-white text-slate-900 border border-slate-200 px-10 py-4 text-base hover:bg-slate-50"
                 onClick={() => navigate("/login")}
                 data-testid="cta-make-mistake-btn"
               >
-                <Zap className="w-5 h-5 mr-2" />
-                MAKE A MISTAKE
+                <Zap className="w-5 h-5 mr-2 text-emerald-500" />
+                I already have an account
               </Button>
             </div>
           </div>
