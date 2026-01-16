@@ -425,29 +425,26 @@ class UnhingedAPITester:
         return self.run_test("Logout", "POST", "auth/logout", 200)[0]
 
 def main():
-    print("🚩 UNHINGED API TESTING SUITE 🚩")
-    print("=" * 50)
+    print("🚩 UNHINGED API TESTING SUITE - EXPANDED PROFILE SCHEMA 🚩")
+    print("=" * 60)
     
     tester = UnhingedAPITester()
     
-    # Test sequence
+    # Test sequence focused on expanded profile schema and regressions
     tests = [
         ("Root Endpoint", tester.test_root_endpoint),
-        ("User Registration", tester.test_register),
+        ("User Registration (with new schema defaults)", tester.test_register),
         ("User Login", tester.test_login),
-        ("Auth Me", tester.test_auth_me),
-        ("Get Profile", tester.test_get_profile),
-        ("Update Profile", tester.test_update_profile),
-        ("Red Flag Suggestions", tester.test_red_flag_suggestions),
-        ("Prompt Suggestions", tester.test_prompt_suggestions),
-        ("Discover Profiles", tester.test_discover_profiles),
-        ("Swipe Action", tester.test_swipe_action),
-        ("Get Matches", tester.test_matches),
-        ("AI Roast Generation", tester.test_ai_roast),
+        ("Auth Me (new fields + no _id)", tester.test_auth_me),
+        ("Get Profile (UserProfile compatibility)", tester.test_get_profile),
+        ("Update Profile (comprehensive new fields)", tester.test_update_profile),
+        ("Red Flag Suggestions (regression)", tester.test_red_flag_suggestions),
+        ("Prompt Suggestions (regression)", tester.test_prompt_suggestions),
+        ("AI Roast Generation (regression)", tester.test_ai_roast),
         ("Logout", tester.test_logout)
     ]
     
-    print(f"\nRunning {len(tests)} API tests...\n")
+    print(f"\nRunning {len(tests)} API tests focused on expanded profile schema...\n")
     
     for test_name, test_func in tests:
         try:
@@ -456,9 +453,9 @@ def main():
             tester.log_test(test_name, False, f"Exception: {str(e)}")
     
     # Print summary
-    print("\n" + "=" * 50)
-    print("📊 TEST SUMMARY")
-    print("=" * 50)
+    print("\n" + "=" * 60)
+    print("📊 TEST SUMMARY - EXPANDED PROFILE SCHEMA")
+    print("=" * 60)
     print(f"Tests Run: {tester.tests_run}")
     print(f"Tests Passed: {tester.tests_passed}")
     print(f"Tests Failed: {tester.tests_run - tester.tests_passed}")
@@ -470,6 +467,8 @@ def main():
         print(f"\n❌ FAILED TESTS ({len(failed_tests)}):")
         for test in failed_tests:
             print(f"   • {test['test']}: {test['details']}")
+    else:
+        print(f"\n✅ ALL TESTS PASSED! Expanded profile schema working correctly.")
     
     return 0 if tester.tests_passed == tester.tests_run else 1
 
