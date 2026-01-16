@@ -63,10 +63,10 @@
     }
   },
   "visual_enhancers": {
-    "textures": "Use CSS noise overlays or 'scanline' effects.",
-    "borders": "Visible 1px or 2px borders on almost everything.",
-    "shadows": "Hard shadows only (box-shadow: 4px 4px 0px 0px color). No soft blurs.",
-    "animations": "Glitch effects on hover, marquee scrolling text, rapid cuts."
+    "textures": "Minimal noise; prefer clean surfaces with subtle gradients.",
+    "borders": "Soft 1px borders on key surfaces only, not on everything.",
+    "shadows": "Soft, subtle shadows for depth (no hard 4px offsets).",
+    "animations": "Gentle transitions and micro-interactions; avoid aggressive glitch effects."
   },
   "image_urls": {
     "hero_background": "https://images.unsplash.com/photo-1599652870898-0ea236f5010f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjQyMTd8MHwxfHNlYXJjaHwxfHxhd2t3YXJkJTIwc2VsZmllJTIwYmFkJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzY4NTU2NzU0fDA&ixlib=rb-4.1.0&q=85",
