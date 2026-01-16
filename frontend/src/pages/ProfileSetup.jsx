@@ -223,7 +223,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
             <div className="space-y-6">
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold uppercase mb-2">THE BASICS</h2>
-                <p className="text-[#E0E0E0]/60 font-mono text-sm">Don't worry, it only gets worse from here.</p>
+                <p className="text-[#E0E0E0]/60 font-mono text-sm">Don&apos;t worry, it only gets worse from here.</p>
               </div>
 
               <div className="space-y-4">
