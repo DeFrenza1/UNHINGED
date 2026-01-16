@@ -124,9 +124,9 @@ const Chat = ({ user, token }) => {
   }, {});
 
   return (
-    <div className="min-h-screen bg-[#050505] flex flex-col">
+    <div className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] flex flex-col">
       {/* Header */}
-      <header className="border-b-2 border-white/10 bg-[#0a0a0a] flex-shrink-0">
+      <header className="border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur flex-shrink-0">
         <div className="max-w-2xl mx-auto px-4 py-3 flex items-center gap-4">
           <Button
             variant="ghost"
@@ -140,7 +140,7 @@ const Chat = ({ user, token }) => {
           
           {matchedUser && (
             <div className="flex items-center gap-3 flex-grow">
-              <div className="w-10 h-10 border-2 border-[#39FF14] overflow-hidden">
+              <div className="w-10 h-10 rounded-full border border-[hsl(var(--border))] overflow-hidden bg-slate-100">
                 {matchedUser.photos?.[0] || matchedUser.picture ? (
                   <img
                     src={matchedUser.photos?.[0] || matchedUser.picture}
@@ -148,14 +148,14 @@ const Chat = ({ user, token }) => {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full bg-[#1a1a1a] flex items-center justify-center">
-                    <Flag className="w-4 h-4 text-white/20" />
+                  <div className="w-full h-full bg-slate-100 flex items-center justify-center">
+                    <Flag className="w-4 h-4 text-slate-400" />
                   </div>
                 )}
               </div>
               <div>
-                <h2 className="font-bold text-[#E0E0E0]">{matchedUser.name}</h2>
-                <p className="text-[#E0E0E0]/40 font-mono text-xs">
+                <h2 className="font-bold text-slate-900">{matchedUser.name}</h2>
+                <p className="text-slate-500 font-mono text-xs">
                   {matchedUser.red_flags?.[0] ? `🚩 ${matchedUser.red_flags[0]}` : "Chaotic match"}
                 </p>
               </div>
@@ -169,20 +169,20 @@ const Chat = ({ user, token }) => {
         <div className="max-w-2xl mx-auto">
           {loading ? (
             <div className="flex flex-col items-center justify-center h-full py-20">
-              <Loader2 className="w-8 h-8 text-[#39FF14] animate-spin mb-4" />
-              <p className="text-[#E0E0E0]/60 font-mono text-sm">Loading chaos...</p>
+              <Loader2 className="w-8 h-8 text-emerald-500 animate-spin mb-4" />
+              <p className="text-slate-500 font-mono text-sm">Loading your chat...</p>
             </div>
           ) : messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <AlertTriangle className="w-12 h-12 text-[#FF00FF] mb-4" />
-              <h3 className="text-xl font-bold uppercase mb-2">START THE CHAOS</h3>
-              <p className="text-[#E0E0E0]/60 font-mono text-sm mb-6 max-w-sm">
-                You matched! Now break the ice with something unhinged.
+              <AlertTriangle className="w-12 h-12 text-emerald-400 mb-4" />
+              <h3 className="text-xl font-bold mb-2 text-slate-900">Say hi</h3>
+              <p className="text-slate-500 font-mono text-sm mb-6 max-w-sm">
+                You matched! Break the ice with something a little unhinged (or let AI help).
               </p>
               <Button
                 onClick={generateIcebreaker}
                 disabled={generatingIcebreaker}
-                className="bg-[#00FFFF] text-black font-bold uppercase px-6 py-2 hover:bg-[#00FFFF]/80 rounded-none"
+                className="btn-soft bg-emerald-500 text-white px-6 py-2 text-sm font-semibold"
                 data-testid="generate-icebreaker-btn"
               >
                 {generatingIcebreaker ? (
@@ -199,7 +199,7 @@ const Chat = ({ user, token }) => {
                 <div key={date}>
                   {/* Date Separator */}
                   <div className="flex items-center justify-center my-4">
-                    <span className="text-[#E0E0E0]/40 font-mono text-xs bg-[#111] px-3 py-1 border border-white/10">
+                    <span className="text-slate-500 font-mono text-xs bg-white px-3 py-1 border border-[hsl(var(--border))] rounded-full">
                       {date}
                     </span>
                   </div>
