@@ -200,22 +200,74 @@ class UnhingedAPITester:
         return False
 
     def test_update_profile(self):
-        """Test updating user profile"""
+        """Test updating user profile with comprehensive new fields"""
         if not self.token:
             self.log_test("Update Profile", False, "No auth token")
             return False
             
+        # Comprehensive update data exercising all new fields
         update_data = {
-            "age": 25,
-            "bio": "Living my best chaotic life",
-            "location": "Chaos City",
-            "red_flags": ["I reply 3 days later", "My ex is my best friend"],
-            "negative_qualities": ["Chronically late", "Can't cook anything"],
+            "display_name": "Alex 'Chaos' Johnson",
+            "age": 28,
+            "bio": "Living authentically chaotic since 1995. Warning: I will overshare about my houseplants.",
+            "gender_identity": "Non-binary",
+            "pronouns": "they/them",
+            "sexuality": "Pansexual",
+            "interested_in": ["Women", "Men", "Non-binary"],
+            "city": "Portland",
+            "country": "United States",
+            "drinking": "Socially",
+            "smoking": "Never",
+            "exercise": "Sometimes",
+            "red_flags": ["I reply 3 days later", "My ex is my best friend", "I have strong opinions about fonts"],
+            "dealbreaker_red_flags": ["Doesn't tip service workers", "Rude to animals"],
+            "negative_qualities": ["Chronically late", "Can't cook anything", "Talks to plants more than people"],
             "photos": ["https://via.placeholder.com/400x600"],
-            "worst_photo_caption": "This is my disaster energy"
+            "worst_photo_caption": "This is my disaster energy in its natural habitat",
+            "pref_age_min": 25,
+            "pref_age_max": 35,
+            "pref_genders": ["Women", "Non-binary"],
+            "pref_distance_km": 50
         }
         
-        return self.run_test("Update Profile", "PUT", "profile", 200, update_data)[0]
+        success, response = self.run_test("Update Profile", "PUT", "profile", 200, update_data)
+        
+        if success:
+            # Verify response reflects updated fields
+            for field, expected_value in update_data.items():
+                actual_value = response.get(field)
+                if actual_value != expected_value:
+                    self.log_test(f"Update Profile - {field}", False, 
+                                f"Expected {expected_value}, got {actual_value}")
+                    return False
+                else:
+                    print(f"   ✓ {field}: {actual_value}")
+            
+            # Verify profile completeness logic (should be based on age, bio, red_flags, photos only)
+            expected_complete = (
+                response.get('age') is not None and
+                response.get('bio') is not None and
+                len(response.get('red_flags', [])) > 0 and
+                len(response.get('photos', [])) > 0
+            )
+            
+            actual_complete = response.get('profile_complete', False)
+            if actual_complete != expected_complete:
+                self.log_test("Update Profile - Completeness Logic", False, 
+                            f"Expected profile_complete={expected_complete}, got {actual_complete}")
+                return False
+            
+            print(f"   ✓ Profile completeness logic correct: {actual_complete}")
+            
+            # Check for MongoDB _id field (should not be present)
+            if '_id' in response:
+                self.log_test("Update Profile - No _id", False, "MongoDB _id field present in response")
+                return False
+            
+            print("   ✓ No schema validation issues")
+            return True
+        
+        return False
 
     def test_red_flag_suggestions(self):
         """Test red flag suggestions endpoint"""
