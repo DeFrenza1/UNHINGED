@@ -470,7 +470,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                   <Flag className="w-6 h-6 text-red-500" />
                   YOUR RED FLAGS
                 </h2>
-                <p className="text-[#E0E0E0]/60 font-mono text-sm">Select all that apply. We're not judging. Okay, we are.</p>
+                <p className="text-[#E0E0E0]/60 font-mono text-sm">Select all that apply. We&apos;re not judging. Okay, we are.</p>
               </div>
 
               {/* Selected Red Flags */}
