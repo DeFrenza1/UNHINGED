@@ -109,27 +109,27 @@ const Landing = () => {
       </div>
 
       {/* Features Section */}
-      <section className="py-20 bg-[#0a0a0a]">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase mb-4 border-b-4 border-[#39FF14] inline-block pb-2">
-            HOW IT WORKS
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900">
+            How Unhinged works
           </h2>
-          <p className="text-[#E0E0E0]/60 font-mono mb-12">(Spoiler: It&apos;s a beautiful disaster)</p>
+          <p className="text-slate-600 font-mono mb-12">(Spoiler: it&apos;s still a beautiful disaster, just with better UX.)</p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-white/20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="p-8 border-white/20 border-b-2 md:border-r-2 last:border-r-0 hover:bg-[#111] transition-colors group"
+                className="card-soft p-6 text-left bg-white"
                 data-testid={`feature-card-${index}`}
               >
-                <div className="text-[#39FF14] mb-4 group-hover:scale-110 transition-transform">
+                <div className="text-emerald-500 mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold uppercase mb-2 text-[#E0E0E0]">
+                <h3 className="text-xl font-semibold mb-2 text-slate-900">
                   {feature.title}
                 </h3>
-                <p className="text-[#E0E0E0]/60 font-mono text-sm">
+                <p className="text-slate-600 font-mono text-sm">
                   {feature.description}
                 </p>
               </div>
@@ -139,10 +139,10 @@ const Landing = () => {
       </section>
 
       {/* Red Flags Preview */}
-      <section className="py-20">
+      <section className="py-20 bg-[hsl(var(--muted))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase mb-12 text-center">
-            <span className="bg-[#FF3B30] text-white px-4">POPULAR RED FLAGS</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center text-slate-900">
+            Popular red flags (and why we love them)
           </h2>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -188,13 +188,13 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t-2 border-[#333]">
+      <footer className="py-8 border-t border-[hsl(var(--border))] bg-white">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-[#39FF14]" />
-            <span className="font-bold text-[#39FF14]">UNHINGED</span>
+            <AlertTriangle className="w-5 h-5 text-emerald-500" />
+            <span className="font-bold text-slate-900">UNHINGED</span>
           </div>
-          <p className="text-[#E0E0E0]/40 font-mono text-sm">
+          <p className="text-slate-500 font-mono text-sm">
             © 2024 Unhinged. All chaos reserved.
           </p>
         </div>
