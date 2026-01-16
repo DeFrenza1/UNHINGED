@@ -98,6 +98,9 @@ const Settings = ({ user, setUser, logout, token }) => {
   };
 
   const removePhoto = (url) => {
+    setProfile({ ...profile, photos: profile.photos.filter(p => p !== url) });
+  };
+
   const handleDisableAccount = async () => {
     try {
       await axios.post(`${API}/users/me/disable`, {}, { headers });
@@ -117,10 +120,6 @@ const Settings = ({ user, setUser, logout, token }) => {
     } catch (error) {
       toast.error("Failed to delete account.");
     }
-  };
-
-
-    setProfile({ ...profile, photos: profile.photos.filter(p => p !== url) });
   };
 
   return (
