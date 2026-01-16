@@ -1,0 +1,102 @@
+{
+  "identity": {
+    "name": "Unhinged",
+    "tagline": "Dating for the Flawed & Chaotic",
+    "tone": "Satirical, Chaotic, Brutalist, Self-Deprecating",
+    "aesthetic": "Neon Retro x Anti-Design x Neubrutalism"
+  },
+  "typography": {
+    "primary_font": "Space Mono",
+    "secondary_font": "JetBrains Mono",
+    "heading_styles": {
+      "h1": "text-5xl md:text-7xl font-bold tracking-tighter uppercase",
+      "h2": "text-3xl md:text-5xl font-bold tracking-tight uppercase border-b-4 border-primary",
+      "h3": "text-xl md:text-2xl font-bold uppercase bg-primary text-black inline-block px-2"
+    },
+    "body_styles": {
+      "base": "text-base md:text-lg font-mono leading-relaxed",
+      "small": "text-sm font-mono opacity-80"
+    },
+    "google_fonts_import": "https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;700&display=swap"
+  },
+  "colors": {
+    "palette": {
+      "background": "#050505",
+      "foreground": "#E0E0E0",
+      "primary": "#39FF14",
+      "secondary": "#FF00FF",
+      "accent": "#00FFFF",
+      "destructive": "#FF3B30",
+      "warning": "#FFFF00",
+      "muted": "#1A1A1A",
+      "border": "#333333"
+    },
+    "usage": {
+      "background": "bg-[#050505]",
+      "text_main": "text-[#E0E0E0]",
+      "brand_toxic": "text-[#39FF14] or bg-[#39FF14]",
+      "brand_chaos": "text-[#FF00FF] or bg-[#FF00FF]",
+      "border_color": "border-[#333333]"
+    },
+    "gradients": "NONE. Use solid blocks of color or noise textures."
+  },
+  "layout": {
+    "grid_system": "Brutalist Grid: Visible borders, uneven columns, 'bento' style but chaotic.",
+    "spacing": "Generous but irregular. Use p-8 or p-12 for sections. Gap-0 for grid items with borders.",
+    "container": "max-w-7xl mx-auto px-4 md:px-8",
+    "z_index_strategy": "Layer elements aggressively. Use z-10, z-20, z-30 to create depth without shadows."
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#39FF14] text-black font-bold uppercase px-8 py-4 border-2 border-[#39FF14] hover:bg-black hover:text-[#39FF14] transition-all duration-0 shadow-[4px_4px_0px_0px_#FFFFFF]",
+      "secondary": "bg-transparent text-[#FF00FF] border-2 border-[#FF00FF] font-bold uppercase px-8 py-4 hover:bg-[#FF00FF] hover:text-black transition-all duration-0 shadow-[4px_4px_0px_0px_#FFFFFF]",
+      "destructive": "bg-[#FF3B30] text-white font-bold uppercase px-6 py-3 hover:bg-red-700 shadow-[4px_4px_0px_0px_#000000]"
+    },
+    "cards": {
+      "profile": "bg-[#111] border-2 border-white/20 p-4 relative overflow-hidden hover:border-[#39FF14] transition-colors",
+      "red_flag": "bg-red-900/20 border border-red-500/50 p-4 rotate-1 hover:rotate-0 transition-transform",
+      "chat_bubble_me": "bg-[#39FF14] text-black p-3 max-w-[80%] self-end font-mono border-2 border-black shadow-[2px_2px_0px_0px_#000000]",
+      "chat_bubble_them": "bg-[#222] text-white p-3 max-w-[80%] self-start font-mono border-2 border-white/20"
+    },
+    "inputs": {
+      "default": "bg-black border-2 border-white/30 p-4 text-white font-mono focus:border-[#39FF14] focus:outline-none focus:shadow-[4px_4px_0px_0px_#39FF14] placeholder:text-white/30"
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Use CSS noise overlays or 'scanline' effects.",
+    "borders": "Visible 1px or 2px borders on almost everything.",
+    "shadows": "Hard shadows only (box-shadow: 4px 4px 0px 0px color). No soft blurs.",
+    "animations": "Glitch effects on hover, marquee scrolling text, rapid cuts."
+  },
+  "image_urls": {
+    "hero_background": "https://images.unsplash.com/photo-1599652870898-0ea236f5010f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjQyMTd8MHwxfHNlYXJjaHwxfHxhd2t3YXJkJTIwc2VsZmllJTIwYmFkJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzY4NTU2NzU0fDA&ixlib=rb-4.1.0&q=85",
+    "bad_photos": [
+      "https://images.unsplash.com/photo-1744940454166-804b65037b2d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjQyMTd8MHwxfHNlYXJjaHwyfHxhd2t3YXJkJTIwc2VsZmllJTIwYmFkJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzY4NTU2NzU0fDA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1758179764139-d4c75123de1e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjQyMTd8MHwxfHNlYXJjaHwzfHxhd2t3YXJkJTIwc2VsZmllJTIwYmFkJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzY4NTU2NzU0fDA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1661484575641-2253af5e5c2b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjQyMTd8MHwxfHNlYXJjaHw0fHxhd2t3YXJkJTIwc2VsZmllJTIwYmFkJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzY4NTU2NzU0fDA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1715366843673-f21a95ec11cc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwxfHxtZXNzeSUyMHJvb20lMjBiYWNrZ3JvdW5kJTIwc2VsZmllfGVufDB8fHx8MTc2ODU1Njc1N3ww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1600910408654-448552be8bd1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwyfHxtZXNzeSUyMHJvb20lMjBiYWNrZ3JvdW5kJTIwc2VsZmllfGVufDB8fHx8MTc2ODU1Njc1N3ww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1639351823493-9e451eca0b5b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBtYWtpbmclMjBmdW5ueSUyMGZhY2UlMjBjbG9zZSUyMHVwfGVufDB8fHx8MTc2ODU1Njc1OHww&ixlib=rb-4.1.0&q=85"
+    ],
+    "placeholders": {
+      "user_avatar": "https://images.unsplash.com/photo-1615848289715-e20818b5b56e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwyfHxwZXJzb24lMjBtYWtpbmclMjBmdW5ueSUyMGZhY2UlMjBjbG9zZSUyMHVwfGVufDB8fHx8MTc2ODU1Njc1OHww&ixlib=rb-4.1.0&q=85"
+    }
+  },
+  "instructions_to_main_agent": [
+    "1. THEME: Force DARK MODE everywhere. The app should feel like a basement rave or a terminal.",
+    "2. FONTS: Import 'Space Mono' and 'JetBrains Mono' in index.css immediately.",
+    "3. COMPONENTS: Do NOT use rounded-xl or rounded-2xl. Use rounded-none or rounded-sm. This is BRUTALISM.",
+    "4. BORDERS: Add borders to everything. 'border border-white/20' is your friend.",
+    "5. RED FLAGS: Highlight 'Red Flags' with a specific UI component (e.g., a tilted warning sticker).",
+    "6. IMAGES: Use the provided 'bad_photos' for user profiles in the feed to sell the concept.",
+    "7. COPY: Use the 'tone' defined above. Buttons shouldn't say 'Sign Up', they should say 'ENTER THE CHAOS' or 'MAKE A MISTAKE'.",
+    "8. SHADCN: Customize Shadcn components to remove rounded corners and add hard borders."
+  ],
+  "universal_guidelines": [
+    "Avoid generic 'AI slop' designs.",
+    "No smooth gradients.",
+    "No 'Inter' font.",
+    "Use high contrast.",
+    "Make it weird but usable."
+  ]
+}
