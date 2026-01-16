@@ -746,7 +746,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
               {/* Add Photo URL */}
               <div className="space-y-2">
-                <Label className="text-[#E0E0E0] uppercase text-sm">Add Photo URL</Label>
+                <Label className="text-slate-700 text-sm font-medium">Add photo URL</Label>
                 <div className="flex gap-2">
                   <Input
                     placeholder="https://your-terrible-photo.jpg"
