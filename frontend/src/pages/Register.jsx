@@ -61,7 +61,7 @@ const Register = ({ login }) => {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <AlertTriangle className="w-10 h-10 text-emerald-500" />
+          <AlertTriangle className="w-10 h-10 text-purple-500" />
           <span className="text-3xl font-bold tracking-tighter text-slate-900">UNHINGED</span>
         </div>
 
@@ -144,7 +144,7 @@ const Register = ({ login }) => {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full btn-soft bg-emerald-500 text-white h-12 text-sm font-semibold mt-2"
+              className="w-full btn-soft bg-purple-500 text-white h-12 text-sm font-semibold mt-2"
               data-testid="register-submit-btn"
             >
               {loading ? (
@@ -182,7 +182,7 @@ const Register = ({ login }) => {
 
           <p className="text-center text-slate-600 font-mono text-sm mt-8">
             Already have an account?{" "}
-            <Link to="/login" className="text-emerald-600 hover:underline" data-testid="login-link">
+            <Link to="/login" className="text-purple-600 hover:underline" data-testid="login-link">
               Log in
             </Link>
           </p>

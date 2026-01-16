@@ -168,7 +168,7 @@ const Landing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-emerald-50">
+      <section className="py-20 bg-purple-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
             Ready for people who like you at your worst?
@@ -177,7 +177,7 @@ const Landing = () => {
             Join other gloriously flawed humans finding matches who can handle the chaos and enjoy the glow-up.
           </p>
           <Button
-            className="btn-soft bg-emerald-500 text-white px-10 py-4 text-base"
+            className="btn-soft bg-purple-500 text-white px-10 py-4 text-base"
             onClick={() => navigate("/register")}
             data-testid="bottom-cta-btn"
           >
@@ -190,7 +190,7 @@ const Landing = () => {
       <footer className="py-8 border-t border-[hsl(var(--border))] bg-white">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-emerald-500" />
+            <AlertTriangle className="w-5 h-5 text-purple-500" />
             <span className="font-bold text-slate-900">UNHINGED</span>
           </div>
           <p className="text-slate-500 font-mono text-sm">

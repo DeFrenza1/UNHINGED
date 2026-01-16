@@ -56,7 +56,7 @@ const Matches = ({ user, token }) => {
               <ArrowLeft className="w-6 h-6" />
             </Button>
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-6 h-6 text-emerald-500" />
+              <AlertTriangle className="w-6 h-6 text-purple-500" />
               <span className="text-xl font-bold text-slate-900">Matches</span>
             </div>
           </div>
@@ -70,19 +70,19 @@ const Matches = ({ user, token }) => {
       <div className="max-w-2xl mx-auto px-4 py-8">
         {loading ? (
           <div className="flex flex-col items-center justify-center h-[60vh]">
-            <Loader2 className="w-12 h-12 text-emerald-500 animate-spin mb-4" />
+            <Loader2 className="w-12 h-12 text-purple-500 animate-spin mb-4" />
             <p className="text-slate-500 font-mono">Loading your matches...</p>
           </div>
         ) : matches.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-            <Heart className="w-16 h-16 text-emerald-400 mb-4" />
+            <Heart className="w-16 h-16 text-purple-400 mb-4" />
             <h2 className="text-2xl font-bold mb-2 text-slate-900">No matches yet</h2>
             <p className="text-slate-500 font-mono mb-6 max-w-md">
               Keep swiping in Discover to find people who can handle your red flags.
             </p>
             <Button
               onClick={() => navigate("/discover")}
-              className="btn-soft bg-emerald-500 text-white px-6 py-2 text-sm font-semibold"
+              className="btn-soft bg-purple-500 text-white px-6 py-2 text-sm font-semibold"
               data-testid="back-to-discover-btn"
             >
               <Users className="w-5 h-5 mr-2" />
