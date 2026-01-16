@@ -788,7 +788,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                   <Skull className="w-6 h-6 text-[#FF00FF]" />
                   CHAOS PROMPTS
                 </h2>
-                <p className="text-[#E0E0E0]/60 font-mono text-sm">Answer at least 2. Be unhinged about it.</p>
+                <p className="text-slate-600 font-mono text-sm">Answer at least 2. Be unhinged about it.</p>
               </div>
 
               <div className="space-y-4">
