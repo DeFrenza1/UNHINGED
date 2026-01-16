@@ -286,12 +286,38 @@ class UnhingedAPITester:
         return False
 
     def test_auth_me(self):
-        """Test auth/me endpoint"""
+        """Test auth/me endpoint - verify new fields and no MongoDB _id serialization issues"""
         if not self.token:
             self.log_test("Auth Me", False, "No auth token")
             return False
             
-        return self.run_test("Auth Me", "GET", "auth/me", 200)[0]
+        success, response = self.run_test("Auth Me", "GET", "auth/me", 200)
+        
+        if success:
+            # Check for MongoDB _id field (should not be present)
+            if '_id' in response:
+                self.log_test("Auth Me - No _id", False, "MongoDB _id field present in response")
+                return False
+            
+            # Verify new profile fields are present
+            required_new_fields = [
+                'gender_identity', 'pronouns', 'sexuality', 'interested_in',
+                'city', 'country', 'drinking', 'smoking', 'exercise',
+                'pref_age_min', 'pref_age_max', 'pref_genders', 'pref_distance_km',
+                'dealbreaker_red_flags'
+            ]
+            
+            for field in required_new_fields:
+                if field not in response:
+                    self.log_test(f"Auth Me - {field} field", False, f"Missing {field} field")
+                    return False
+                else:
+                    print(f"   ✓ {field}: {response[field]}")
+            
+            print("   ✓ No MongoDB _id serialization issues")
+            return True
+        
+        return False
 
     def test_logout(self):
         """Test logout endpoint"""
