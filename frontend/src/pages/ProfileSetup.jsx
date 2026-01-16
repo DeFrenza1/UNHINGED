@@ -66,6 +66,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
   const [customRedFlag, setCustomRedFlag] = useState("");
   const [customQuality, setCustomQuality] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
+  const [dealbreakerSelection, setDealbreakerSelection] = useState([]);
 
   useEffect(() => {
     fetchSuggestions();
