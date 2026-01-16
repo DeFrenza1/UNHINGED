@@ -80,14 +80,14 @@ const Login = ({ login }) => {
             <div className="space-y-2">
               <Label htmlFor="password" className="text-slate-700 text-sm font-medium">Password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#E0E0E0]/40" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <Input
                   id="password"
                   type="password"
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="bg-black border-2 border-white/30 pl-10 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] pl-10 h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                   required
                   data-testid="login-password-input"
                 />
@@ -97,13 +97,13 @@ const Login = ({ login }) => {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#39FF14] text-black font-bold uppercase h-12 border-2 border-[#39FF14] hover:bg-black hover:text-[#39FF14] transition-all btn-brutal rounded-none"
+              className="w-full btn-soft bg-emerald-500 text-white h-12 text-sm font-semibold"
               data-testid="login-submit-btn"
             >
               {loading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
               ) : (
-                "ENTER THE VOID"
+                "Log in"
               )}
             </Button>
           </form>
@@ -121,7 +121,7 @@ const Login = ({ login }) => {
             type="button"
             variant="outline"
             onClick={handleGoogleLogin}
-            className="w-full bg-transparent text-[#E0E0E0] border-2 border-white/30 font-bold uppercase h-12 hover:bg-white/10 hover:border-white/50 transition-all rounded-none"
+            className="w-full btn-soft bg-white text-slate-900 border border-[hsl(var(--border))] h-12 text-sm font-semibold hover:bg-slate-50"
             data-testid="google-login-btn"
           >
             <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
@@ -145,10 +145,10 @@ const Login = ({ login }) => {
             CONTINUE WITH GOOGLE
           </Button>
 
-          <p className="text-center text-[#E0E0E0]/60 font-mono text-sm mt-8">
-            New to the chaos?{" "}
-            <Link to="/register" className="text-[#39FF14] hover:underline" data-testid="register-link">
-              CREATE AN ACCOUNT
+          <p className="text-center text-slate-600 font-mono text-sm mt-8">
+            New here?{" "}
+            <Link to="/register" className="text-emerald-600 hover:underline" data-testid="register-link">
+              Create an account
             </Link>
           </p>
         </div>
