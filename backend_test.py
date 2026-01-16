@@ -156,12 +156,48 @@ class UnhingedAPITester:
         return success and 'access_token' in response
 
     def test_get_profile(self):
-        """Test getting user profile"""
+        """Test getting user profile - ensure UserProfile-compatible payload with new fields"""
         if not self.token:
             self.log_test("Get Profile", False, "No auth token")
             return False
             
-        return self.run_test("Get Profile", "GET", "profile", 200)[0]
+        success, response = self.run_test("Get Profile", "GET", "profile", 200)
+        
+        if success:
+            # Check for MongoDB _id field (should not be present)
+            if '_id' in response:
+                self.log_test("Get Profile - No _id", False, "MongoDB _id field present in response")
+                return False
+            
+            # Verify created_at is handled correctly
+            if 'created_at' not in response:
+                self.log_test("Get Profile - created_at", False, "Missing created_at field")
+                return False
+            
+            # Verify new profile fields are present and UserProfile-compatible
+            required_fields = [
+                'user_id', 'email', 'name', 'display_name', 'age', 'bio',
+                'gender_identity', 'pronouns', 'sexuality', 'interested_in',
+                'city', 'country', 'drinking', 'smoking', 'exercise',
+                'pref_age_min', 'pref_age_max', 'pref_genders', 'pref_distance_km',
+                'dealbreaker_red_flags', 'red_flags', 'negative_qualities',
+                'photos', 'prompts', 'profile_complete', 'created_at'
+            ]
+            
+            missing_fields = []
+            for field in required_fields:
+                if field not in response:
+                    missing_fields.append(field)
+            
+            if missing_fields:
+                self.log_test("Get Profile - Required Fields", False, f"Missing fields: {missing_fields}")
+                return False
+            
+            print(f"   ✓ All UserProfile fields present")
+            print(f"   ✓ created_at: {response['created_at']}")
+            return True
+        
+        return False
 
     def test_update_profile(self):
         """Test updating user profile"""
