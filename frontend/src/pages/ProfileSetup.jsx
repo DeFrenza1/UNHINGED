@@ -680,7 +680,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
               {/* Negative Qualities */}
               <div className="border-t-2 border-white/10 pt-6 mt-6">
-                <Label className="text-[#E0E0E0] uppercase text-sm mb-3 block">Negative Qualities (Optional)</Label>
+                <Label className="text-slate-700 text-sm font-medium mb-3 block">Negative qualities (optional)</Label>
                 
                 {profile.negative_qualities.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-4">
