@@ -481,33 +481,52 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     {profile.red_flags.map((flag, i) => (
                       <Badge
                         key={i}
-                        className={`border px-3 py-1 font-mono cursor-pointer hover:bg-red-900/50 ${
-                          profile.dealbreaker_red_flags.includes(flag)
-                            ? "bg-red-900/70 border-red-500 text-red-200"
-                            : "bg-red-900/30 border-red-500/50 text-red-400"
-                        }`}
-                        onClick={() => {
-                          // Toggle dealbreaker status on shift-click, otherwise remove
-                          if (profile.dealbreaker_red_flags.includes(flag)) {
-                            setProfile({
-                              ...profile,
-                              dealbreaker_red_flags: profile.dealbreaker_red_flags.filter((f) => f !== flag),
-                            });
-                          } else {
-                            setProfile({
-                              ...profile,
-                              dealbreaker_red_flags: [...profile.dealbreaker_red_flags, flag],
-                            });
-                          }
-                        }}
+                        className="bg-red-900/30 border border-red-500/50 text-red-400 px-3 py-1 font-mono cursor-pointer hover:bg-red-900/50"
+                        onClick={() => removeRedFlag(flag)}
                         data-testid={`selected-flag-${i}`}
                       >
-                        🚩 {flag}
-                        {profile.dealbreaker_red_flags.includes(flag) && (
-                          <span className="ml-1 text-xs uppercase">(Dealbreaker)</span>
-                        )}
+                        🚩 {flag} <X className="w-3 h-3 ml-1" />
                       </Badge>
                     ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Dealbreaker Red Flags */}
+              {profile.red_flags.length > 0 && (
+                <div className="mt-4">
+                  <Label className="text-[#E0E0E0] uppercase text-sm mb-2 block">Mark Dealbreakers (optional)</Label>
+                  <p className="text-[#E0E0E0]/40 font-mono text-xs mb-2">These are the chaos levels you absolutely won&apos;t tolerate.</p>
+                  <div className="flex flex-wrap gap-2">
+                    {profile.red_flags.map((flag, i) => {
+                      const isDealbreaker = profile.dealbreaker_red_flags.includes(flag);
+                      return (
+                        <Badge
+                          key={`deal-${i}`}
+                          className={`px-3 py-1 font-mono cursor-pointer border ${
+                            isDealbreaker
+                              ? "bg-red-900/80 border-red-500 text-red-100"
+                              : "bg-transparent border-white/30 text-[#E0E0E0]/70"
+                          }`}
+                          onClick={() => {
+                            if (isDealbreaker) {
+                              setProfile({
+                                ...profile,
+                                dealbreaker_red_flags: profile.dealbreaker_red_flags.filter((f) => f !== flag),
+                              });
+                            } else {
+                              setProfile({
+                                ...profile,
+                                dealbreaker_red_flags: [...profile.dealbreaker_red_flags, flag],
+                              });
+                            }
+                          }}
+                        >
+                          {isDealbreaker ? "☠️ Dealbreaker: " : "⚠️ Maybe not: "}
+                          {flag}
+                        </Badge>
+                      );
+                    })}
                   </div>
                 </div>
               )}
