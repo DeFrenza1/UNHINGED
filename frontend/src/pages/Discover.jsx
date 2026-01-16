@@ -265,15 +265,15 @@ const Discover = ({ user, token }) => {
               <Button
                 onClick={() => handleSwipe("like")}
                 disabled={swiping}
-                className="w-16 h-16 rounded-full bg-[#1a1a1a] border-2 border-[#39FF14]/50 hover:bg-[#39FF14]/20 hover:border-[#39FF14] transition-all"
+                className="w-16 h-16 rounded-full bg-slate-100 border border-[hsl(var(--border))] hover:bg-purple-50 hover:border-purple-500 transition-all"
                 data-testid="like-btn"
               >
-                <Heart className="w-8 h-8 text-[#39FF14]" />
+                <Heart className="w-8 h-8 text-purple-500" />
               </Button>
             </div>
 
             {/* Counter */}
-            <p className="text-center text-[#E0E0E0]/40 font-mono text-sm mt-4">
+            <p className="text-center text-slate-500 font-mono text-sm mt-4">
               {currentIndex + 1} / {profiles.length} disasters viewed
             </p>
           </>
@@ -282,11 +282,11 @@ const Discover = ({ user, token }) => {
 
       {/* Match Modal */}
       <Dialog open={!!matchModal} onOpenChange={() => setMatchModal(null)}>
-        <DialogContent className="bg-[#111] border-2 border-[#39FF14] text-[#E0E0E0] max-w-md">
+        <DialogContent className="bg-white border border-[hsl(var(--border))] text-slate-900 max-w-md rounded-2xl">
           <DialogHeader>
             <DialogTitle className="text-center">
-              <div className="text-[#39FF14] text-4xl font-bold uppercase mb-2 neon-text">IT&apos;S A MATCH!</div>
-              <p className="text-[#E0E0E0]/60 font-mono text-sm">Two beautiful disasters, united in chaos</p>
+              <div className="text-purple-500 text-3xl md:text-4xl font-bold mb-2">It&apos;s a match!</div>
+              <p className="text-slate-600 font-mono text-sm">Two beautifully flawed people who get each other.</p>
             </DialogTitle>
           </DialogHeader>
           
