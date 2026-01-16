@@ -796,7 +796,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                   const existing = profile.prompts.find(p => p.id === prompt.id);
                   return (
                     <div key={prompt.id} className="space-y-2">
-                      <Label className="text-[#39FF14] font-mono text-sm">{prompt.question}</Label>
+                      <Label className="text-purple-500 font-mono text-sm">{prompt.question}</Label>
                       <Textarea
                         placeholder="Type your unhinged response..."
                         value={existing?.answer || ""}
