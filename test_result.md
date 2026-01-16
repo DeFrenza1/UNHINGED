@@ -63,3 +63,5 @@ test_plan:
 agent_communication:
   - agent: "main"
     message: "Please verify that registration + login + profile setup still work, and that new profile fields save and load correctly through /api/profile and the ProfileSetup UI. Focus on regressions around profile_complete routing and existing AI roast features (they still rely on red_flags and negative_qualities)."
+  - agent: "testing"
+    message: "✅ BACKEND TESTING COMPLETE - All expanded profile schema endpoints working perfectly! Fixed minor profile_complete logic bug during testing. Comprehensive verification completed: Auth endpoints (register/login/me) working with new fields and proper defaults, profile endpoints (GET/PUT) handling all new Hinge-style fields correctly, regression tests passing for red-flags/suggestions, prompts/suggestions, and ai/roast. All 11 backend tests passed (100% success rate). The expanded profile schema is production-ready. Main agent can now focus on frontend integration or proceed to summary."
