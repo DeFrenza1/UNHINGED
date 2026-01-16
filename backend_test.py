@@ -516,8 +516,14 @@ class UnhingedAPITester:
         }
         
         headers_b = {'Authorization': f'Bearer {user_b["token"]}'}
-        success, _ = self.run_test("Complete User B Profile", "PUT", "profile", 200, profile_b, headers_b)
+        success, profile_b_response = self.run_test("Complete User B Profile", "PUT", "profile", 200, profile_b, headers_b)
         if not success:
+            return False
+        
+        # Debug: Check if profile is marked as complete
+        print(f"   Debug: User B profile_complete: {profile_b_response.get('profile_complete')}")
+        if not profile_b_response.get('profile_complete'):
+            self.log_test("User B Profile Completion", False, "Profile not marked as complete despite having required fields")
             return False
         
         # User C: 30NB, pansexual, looking for anyone 25-35, has dealbreaker that matches User A's red flag
