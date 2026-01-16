@@ -328,7 +328,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     <select
                       value={profile.gender_identity}
                       onChange={(e) => setProfile({ ...profile, gender_identity: e.target.value })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none px-3"
+                      className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full px-3"
                       data-testid="profile-gender-input"
                     >
                       <option value="">Select your vibe</option>
@@ -345,7 +345,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     <select
                       value={profile.pronouns}
                       onChange={(e) => setProfile({ ...profile, pronouns: e.target.value })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none px-3"
+                      className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full px-3"
                       data-testid="profile-pronouns-input"
                     >
                       <option value="">Select your chaos</option>
@@ -366,7 +366,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     <select
                       value={profile.sexuality}
                       onChange={(e) => setProfile({ ...profile, sexuality: e.target.value })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none px-3"
+                      className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full px-3"
                       data-testid="profile-sexuality-input"
                     >
                       <option value="">Select your label</option>
@@ -462,7 +462,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     placeholder="Describe your disaster energy in 3 sentences or less..."
                     value={profile.bio}
                     onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
-                    className="bg-black border-2 border-white/30 min-h-[120px] font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none resize-none"
+                    className="bg-white border border-[hsl(var(--border))] min-h-[120px] font-mono text-slate-900 placeholder:text-slate-400 rounded-2xl resize-none"
                     data-testid="profile-bio-input"
                   />
                 </div>
@@ -490,11 +490,11 @@ const ProfileSetup = ({ user, setUser, token }) => {
                 {/* Lifestyle & match prefs (preview) */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-[hsl(var(--border))] pt-4 mt-4">
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Drinking</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Drinking</Label>
                     <select
                       value={profile.drinking}
                       onChange={(e) => setProfile({ ...profile, drinking: e.target.value })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none px-3"
+                      className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full px-3"
                     >
                       <option value="">Select</option>
                       <option value="never">Never</option>
@@ -504,11 +504,11 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Smoking</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Smoking</Label>
                     <select
                       value={profile.smoking}
                       onChange={(e) => setProfile({ ...profile, smoking: e.target.value })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none px-3"
+                      className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full px-3"
                     >
                       <option value="">Select</option>
                       <option value="no">No</option>
@@ -518,11 +518,11 @@ const ProfileSetup = ({ user, setUser, token }) => {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[#E0E0E0] uppercase text-sm">Exercise</Label>
+                    <Label className="text-slate-700 text-sm font-medium">Exercise</Label>
                     <select
                       value={profile.exercise}
                       onChange={(e) => setProfile({ ...profile, exercise: e.target.value })}
-                      className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none px-3"
+                      className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full px-3"
                     >
                       <option value="">Select</option>
                       <option value="never">Never</option>
