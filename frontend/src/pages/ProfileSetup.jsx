@@ -473,7 +473,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
                   <select
                     value={profile.looking_for}
                     onChange={(e) => setProfile({ ...profile, looking_for: e.target.value })}
-                    className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] focus:border-[#39FF14] rounded-none px-3"
+                    className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full px-3"
                     data-testid="profile-looking-for-input"
                   >
                     <option value="">Choose your bad idea</option>
