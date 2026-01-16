@@ -474,8 +474,8 @@ async def update_profile(update: ProfileUpdate, current_user: dict = Depends(get
         is_complete = (
             len(merged.get("red_flags", [])) > 0 and
             len(merged.get("photos", [])) > 0 and
-            merged.get("age") and
-            merged.get("bio")
+            merged.get("age") is not None and
+            merged.get("bio") is not None and merged.get("bio") != ""
         )
         update_data["profile_complete"] = is_complete
         
