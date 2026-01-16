@@ -175,7 +175,7 @@ const Discover = ({ user, token }) => {
               <div className="p-4 space-y-4">
                 {/* Bio */}
                 {currentProfile.bio && (
-                  <p className="text-[#E0E0E0]/80 font-mono text-sm">{currentProfile.bio}</p>
+                  <p className="text-slate-600 font-mono text-sm">{currentProfile.bio}</p>
                 )}
 
                 {/* Red Flags */}
@@ -220,8 +220,8 @@ const Discover = ({ user, token }) => {
                   <div className="border-t border-white/10 pt-4">
                     {currentProfile.prompts.slice(0, 2).map((prompt, i) => (
                       <div key={i} className="mb-3">
-                        <p className="text-[#39FF14] font-mono text-xs mb-1">{prompt.question}</p>
-                        <p className="text-[#E0E0E0] font-mono text-sm">{prompt.answer}</p>
+                        <p className="text-purple-500 font-mono text-xs mb-1">{prompt.question}</p>
+                        <p className="text-slate-700 font-mono text-sm">{prompt.answer}</p>
                       </div>
                     ))}
                   </div>

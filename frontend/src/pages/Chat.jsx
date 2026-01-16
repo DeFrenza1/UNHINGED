@@ -132,7 +132,7 @@ const Chat = ({ user, token }) => {
             variant="ghost"
             size="icon"
             onClick={() => navigate("/matches")}
-            className="text-[#E0E0E0] hover:text-[#39FF14] hover:bg-transparent"
+            className="text-slate-600 hover:text-purple-500 hover:bg-purple-50"
             data-testid="back-btn"
           >
             <ArrowLeft className="w-6 h-6" />
@@ -262,13 +262,13 @@ const Chat = ({ user, token }) => {
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
               placeholder="Type something unhinged..."
-              className="bg-black border-2 border-white/30 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none flex-grow"
+              className="bg-white border border-[hsl(var(--border))] h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full flex-grow"
               data-testid="message-input"
             />
             <Button
               type="submit"
               disabled={sending || !newMessage.trim()}
-              className="bg-[#39FF14] text-black px-4 hover:bg-[#39FF14]/80 rounded-none flex-shrink-0"
+              className="btn-soft bg-purple-500 text-white px-4 flex-shrink-0"
               data-testid="send-btn"
             >
               {sending ? (
