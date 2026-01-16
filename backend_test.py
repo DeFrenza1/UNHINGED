@@ -357,7 +357,7 @@ class UnhingedAPITester:
         return False
 
     def test_ai_roast(self):
-        """Test AI roast generation"""
+        """Test AI roast generation - regression check for red_flags/negative_qualities"""
         if not self.token:
             self.log_test("AI Roast", False, "No auth token")
             return False
@@ -366,7 +366,16 @@ class UnhingedAPITester:
         
         if success:
             if 'roast' in response:
-                print(f"   Generated roast: {response['roast'][:100]}...")
+                roast_text = response['roast']
+                print(f"   Generated roast: {roast_text[:100]}...")
+                
+                # Verify it's not the default "no red flags" message since we have red flags
+                if "Too perfect or too scared" in roast_text:
+                    self.log_test("AI Roast - Content Check", False, 
+                                "Got default message despite having red flags")
+                    return False
+                
+                print("   ✓ AI roast generated successfully with user's red flags")
                 return True
             else:
                 self.log_test("AI Roast Structure", False, "Missing roast field")
