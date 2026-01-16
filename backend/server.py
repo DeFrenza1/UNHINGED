@@ -250,6 +250,55 @@ async def get_current_user(request: Request, credentials: Optional[HTTPAuthoriza
     
     raise HTTPException(status_code=401, detail="Not authenticated")
 
+
+@api_router.delete("/users/me")
+async def delete_account(current_user: dict = Depends(get_current_user)):
+    """Permanently delete the current user's account and related data"""
+    user_id = current_user["user_id"]
+
+    # Delete messages
+    matches = await db.matches.find({
+        "$or": [{"user1_id": user_id}, {"user2_id": user_id}],
+    }, {"_id": 0, "match_id": 1}).to_list(500)
+    match_ids = [m["match_id"] for m in matches]
+    if match_ids:
+        await db.messages.delete_many({"match_id": {"$in": match_ids}})
+
+    # Delete matches involving user
+    await db.matches.delete_many({
+        "$or": [{"user1_id": user_id}, {"user2_id": user_id}],
+    })
+
+    # Delete swipes involving user
+    await db.swipes.delete_many({
+        "$or": [
+            {"swiper_id": user_id},
+            {"target_id": user_id},
+        ]
+    })
+
+    # Delete sessions
+    await db.user_sessions.delete_many({"user_id": user_id})
+
+    # Finally delete the user
+    await db.users.delete_one({"user_id": user_id})
+
+    return {"success": True}
+
+
+@api_router.post("/users/me/disable")
+async def disable_account(current_user: dict = Depends(get_current_user)):
+    """Soft-disable an account so it no longer appears in discovery or matches"""
+    user_id = current_user["user_id"]
+
+    # Mark user as inactive
+    await db.users.update_one({"user_id": user_id}, {"$set": {"is_active": False}})
+
+    # Optionally, prevent them from being matched further by clearing pending swipes
+    await db.swipes.delete_many({"swiper_id": user_id})
+
+    return {"success": True}
+
 # ==================== AUTH ROUTES ====================
 
 @api_router.post("/auth/register", response_model=TokenResponse)
