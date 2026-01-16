@@ -93,14 +93,14 @@ const Register = ({ login }) => {
             <div className="space-y-2">
               <Label htmlFor="email" className="text-slate-700 text-sm font-medium">Email</Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#E0E0E0]/40" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <Input
                   id="email"
                   type="email"
-                  placeholder="disaster@example.com"
+                  placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-black border-2 border-white/30 pl-10 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] pl-10 h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                   required
                   data-testid="register-email-input"
                 />
@@ -108,16 +108,16 @@ const Register = ({ login }) => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-[#E0E0E0] uppercase text-sm">Password</Label>
+              <Label htmlFor="password" className="text-slate-700 text-sm font-medium">Password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#E0E0E0]/40" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <Input
                   id="password"
                   type="password"
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="bg-black border-2 border-white/30 pl-10 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] pl-10 h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                   required
                   data-testid="register-password-input"
                 />
@@ -125,16 +125,16 @@ const Register = ({ login }) => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword" className="text-[#E0E0E0] uppercase text-sm">Confirm Password</Label>
+              <Label htmlFor="confirmPassword" className="text-slate-700 text-sm font-medium">Confirm password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#E0E0E0]/40" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <Input
                   id="confirmPassword"
                   type="password"
                   placeholder="••••••••"
                   value={formData.confirmPassword}
                   onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  className="bg-black border-2 border-white/30 pl-10 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] pl-10 h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                   required
                   data-testid="register-confirm-password-input"
                 />
