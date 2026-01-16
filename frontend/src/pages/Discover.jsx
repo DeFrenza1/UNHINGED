@@ -84,18 +84,18 @@ const Discover = ({ user, token }) => {
   return (
     <div className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       {/* Navigation */}
-      <nav className="border-b-2 border-white/10 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <nav className="border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/discover")}>
-            <AlertTriangle className="w-6 h-6 text-[#39FF14]" />
-            <span className="text-xl font-bold text-[#39FF14]">UNHINGED</span>
+            <AlertTriangle className="w-6 h-6 text-emerald-500" />
+            <span className="text-xl font-bold text-slate-900">UNHINGED</span>
           </div>
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => navigate("/matches")}
-              className="text-[#E0E0E0] hover:text-[#FF00FF] hover:bg-transparent relative"
+              className="text-slate-600 hover:text-emerald-500 hover:bg-emerald-50 relative"
               data-testid="nav-matches-btn"
             >
               <Users className="w-6 h-6" />
@@ -104,7 +104,7 @@ const Discover = ({ user, token }) => {
               variant="ghost"
               size="icon"
               onClick={() => navigate("/settings")}
-              className="text-[#E0E0E0] hover:text-[#39FF14] hover:bg-transparent"
+              className="text-slate-600 hover:text-slate-900 hover:bg-slate-100"
               data-testid="nav-settings-btn"
             >
               <Settings className="w-6 h-6" />
@@ -117,19 +117,19 @@ const Discover = ({ user, token }) => {
       <div className="max-w-lg mx-auto px-4 py-8">
         {loading ? (
           <div className="flex flex-col items-center justify-center h-[60vh]">
-            <Loader2 className="w-12 h-12 text-[#39FF14] animate-spin mb-4" />
-            <p className="text-[#E0E0E0]/60 font-mono">Finding disasters near you...</p>
+            <Loader2 className="w-12 h-12 text-emerald-500 animate-spin mb-4" />
+            <p className="text-slate-500 font-mono">Finding people who match your flavor of chaos...</p>
           </div>
         ) : profiles.length === 0 || currentIndex >= profiles.length ? (
           <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-            <Flag className="w-16 h-16 text-[#FF00FF] mb-4" />
-            <h2 className="text-2xl font-bold uppercase mb-2">NO MORE CHAOS</h2>
-            <p className="text-[#E0E0E0]/60 font-mono mb-6">
-              You&apos;ve swiped through all available disasters. Check back later!
+            <Flag className="w-16 h-16 text-emerald-400 mb-4" />
+            <h2 className="text-2xl font-bold mb-2 text-slate-900">You&apos;re all caught up</h2>
+            <p className="text-slate-500 font-mono mb-6">
+              You&apos;ve seen everyone for now. Check back soon for more beautifully flawed humans.
             </p>
             <Button
               onClick={fetchProfiles}
-              className="bg-[#39FF14] text-black font-bold uppercase px-6 py-2 hover:bg-[#39FF14]/80 rounded-none"
+              className="btn-soft bg-emerald-500 text-white px-6 py-2 text-sm font-semibold"
               data-testid="refresh-profiles-btn"
             >
               <RefreshCw className="w-5 h-5 mr-2" />
