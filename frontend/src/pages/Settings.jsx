@@ -98,6 +98,28 @@ const Settings = ({ user, setUser, logout, token }) => {
   };
 
   const removePhoto = (url) => {
+  const handleDisableAccount = async () => {
+    try {
+      await axios.post(`${API}/users/me/disable`, {}, { headers });
+      toast.success("Account disabled. You won't appear in discovery anymore.");
+      navigate("/");
+    } catch (error) {
+      toast.error("Failed to disable account.");
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      await axios.delete(`${API}/users/me`, { headers });
+      await logout();
+      navigate("/");
+      toast.success("Account deleted. Thanks for sharing your chaos.");
+    } catch (error) {
+      toast.error("Failed to delete account.");
+    }
+  };
+
+
     setProfile({ ...profile, photos: profile.photos.filter(p => p !== url) });
   };
 
