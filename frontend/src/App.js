@@ -70,8 +70,8 @@ const ProtectedRoute = ({ children, user, loading }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
-        <div className="text-[#39FF14] font-mono text-xl animate-pulse">LOADING...</div>
+      <div className="min-h-screen bg-[hsl(var(--background))] flex items-center justify-center">
+        <div className="text-purple-500 font-mono text-xl animate-pulse">LOADING...</div>
       </div>
     );
   }
