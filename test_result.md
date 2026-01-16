@@ -37,15 +37,18 @@ backend:
 frontend:
   - task: "Expand ProfileSetup wizard with Hinge-style dropdowns and match preference inputs"
     implemented: true
-    working: false
+    working: true
     file: "/app/frontend/src/pages/ProfileSetup.jsx"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
         comment: "Extended step 1 with name, gender, pronouns, sexuality, interested_in, city/country, lifestyle, and match preference inputs; wired to existing /api/profile update endpoint. Needs UI flow testing."
+      - working: true
+        agent: "testing"
+        comment: "✅ COMPREHENSIVE TESTING COMPLETED - Fixed critical profile save issue and verified full ProfileSetup flow working end-to-end! FIXED: Backend validation error (422) caused by empty strings being sent instead of null values - updated saveProfile function to clean empty strings to null. TESTED: 1) Registration → ProfileSetup redirect working correctly. 2) Step 1: All Hinge-style fields (display_name, age, gender_identity, pronouns, sexuality, interested_in multi-select, city, country, bio, looking_for, lifestyle dropdowns, match preferences) working properly. 3) GPS location helper: Button present and functional with proper error handling (shows permission denied message when geolocation unavailable, allows manual entry). 4) Step 2: Red flag selection, custom red flags, dealbreaker marking, and negative qualities all working. 5) Step 3: Photo URL addition, thumbnail display, photo removal, and caption functionality working. 6) Step 4: Chaos prompts filling and final submission working. 7) Complete flow: Successfully redirects to /discover after profile completion. 8) Validation: Proper validation prevents progression without required fields (age, bio, red_flags, photos). All 4 steps of ProfileSetup wizard working correctly with proper data persistence and backend integration."
 metadata:
   created_by: "main_agent"
   version: "1.0"
