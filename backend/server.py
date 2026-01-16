@@ -97,6 +97,8 @@ class UserProfile(BaseModel):
     pref_distance_km: Optional[int] = None
     pref_wants_kids: Optional[str] = None
     pref_relationship_type: Optional[str] = None
+    # Account status
+    is_active: bool = True
     # Meta
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     profile_complete: bool = False
@@ -306,6 +308,8 @@ async def register(user_data: UserCreate):
         "pref_distance_km": None,
         "pref_wants_kids": None,
         "pref_relationship_type": None,
+        # Account status
+        "is_active": True,
         # Meta
         "created_at": datetime.now(timezone.utc).isoformat(),
         "profile_complete": False
@@ -408,6 +412,8 @@ async def create_session_from_google(request: Request, response: Response):
             "pref_distance_km": None,
             "pref_wants_kids": None,
             "pref_relationship_type": None,
+            # Account status
+            "is_active": True,
             # Meta
             "created_at": datetime.now(timezone.utc).isoformat(),
             "profile_complete": False
