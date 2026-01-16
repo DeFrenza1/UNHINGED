@@ -563,11 +563,12 @@ async def discover_profiles(current_user: dict = Depends(get_current_user)):
     swiped_ids = [s["target_id"] for s in swiped]
     swiped_ids.append(user_id)
 
-    # Base candidate set: complete profiles not yet swiped
+    # Base candidate set: complete, active profiles not yet swiped
     candidates = await db.users.find(
         {
             "user_id": {"$nin": swiped_ids},
             "profile_complete": True,
+            "is_active": True,
         },
         {"_id": 0, "password_hash": 0},
     ).to_list(200)
