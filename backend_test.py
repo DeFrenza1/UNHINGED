@@ -201,7 +201,7 @@ class UnhingedAPITester:
             return False
             
         # Create a dummy target user first
-        target_email = f"target_{uuid.uuid4().hex[:8]}@unhinged.test"
+        target_email = f"target_{uuid.uuid4().hex[:8]}@example.com"
         target_data = {
             "name": "Target User",
             "email": target_email,
