@@ -126,13 +126,6 @@ const ProfileSetup = ({ user, setUser, token }) => {
     );
   };
 
-  const [customRedFlag, setCustomRedFlag] = useState("");
-  const [customQuality, setCustomQuality] = useState("");
-  const [photoUrl, setPhotoUrl] = useState("");
-  const [dealbreakerSelection, setDealbreakerSelection] = useState([]);
-  const [geoLoading, setGeoLoading] = useState(false);
-  const [geoError, setGeoError] = useState("");
-
   useEffect(() => {
     fetchSuggestions();
   }, []);
