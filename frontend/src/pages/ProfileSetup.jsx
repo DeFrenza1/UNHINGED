@@ -580,7 +580,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
               {/* Selected Red Flags */}
               {profile.red_flags.length > 0 && (
                 <div className="mb-6">
-                  <Label className="text-[#E0E0E0] uppercase text-sm mb-2 block">Your Flags ({profile.red_flags.length})</Label>
+                  <Label className="text-slate-700 text-sm font-medium mb-2 block">Your flags ({profile.red_flags.length})</Label>
                   <div className="flex flex-wrap gap-2">
                     {profile.red_flags.map((flag, i) => (
                       <Badge
