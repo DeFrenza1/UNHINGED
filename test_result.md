@@ -27,13 +27,16 @@ backend:
         agent: "testing"
         comment: "✅ COMPREHENSIVE TESTING COMPLETED - All expanded profile schema endpoints working correctly. Fixed minor profile_complete logic bug. Verified: 1) Registration with sane defaults for all new fields (gender_identity, pronouns, sexuality, interested_in, city, country, drinking, smoking, exercise, pref_age_min/max, pref_genders, pref_distance_km, dealbreaker_red_flags). 2) Login with valid token generation. 3) /api/auth/me returns all new fields with no MongoDB _id serialization issues. 4) /api/profile returns UserProfile-compatible payload with proper created_at handling. 5) PUT /api/profile successfully updates all new fields with correct profile_complete logic (based on age, bio, red_flags, photos only). 6) Regression tests pass: red-flags/suggestions, prompts/suggestions, ai/roast working with new schema. All 11 tests passed (100% success rate)."
   - task: "Light filtering in /api/discover based on basic prefs (age, gender)"
-    implemented: false
-    working: "NA"
+    implemented: true
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
     needs_retesting: false
-    status_history: []
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ COMPREHENSIVE DISCOVERY & MATCHING TESTING COMPLETED - All discovery filtering and matching functionality working correctly. TESTED: 1) Discovery filtering with 3+ users having different age/gender preferences - mutual preference filtering working correctly (User A 25F wants Men 23-30, User B 27M wants Women 22-28 see each other). 2) Dealbreaker red flag filtering working (User C with 'Always late' dealbreaker correctly filtered out User A who has 'Always late' red flag). 3) Match scoring and sorting - all profiles include match_score and are sorted in descending order. 4) Swipe and match creation - mutual likes create matches correctly, single likes don't create matches. 5) Post-swipe discovery - swiped users correctly excluded from future discovery. 6) Regression checks - users with no preferences see complete profiles, missing age/gender handled gracefully. 7) No 500 errors, all responses valid JSON with no MongoDB _id leakage. Fixed gender preference matching issue (singular vs plural forms). All 17 tests passed (100% success rate)."
 frontend:
   - task: "Expand ProfileSetup wizard with Hinge-style dropdowns and match preference inputs"
     implemented: true
