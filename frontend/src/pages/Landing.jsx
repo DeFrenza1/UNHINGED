@@ -170,20 +170,20 @@ const Landing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#39FF14]">
+      <section className="py-20 bg-emerald-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold uppercase text-black mb-6">
-            READY TO BE UNHINGED?
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
+            Ready for people who like you at your worst?
           </h2>
-          <p className="text-black/70 font-mono mb-8 text-lg">
-            Join thousands of gloriously flawed humans finding their perfectly imperfect match.
+          <p className="text-slate-600 font-mono mb-8 text-lg">
+            Join other gloriously flawed humans finding matches who can handle the chaos and enjoy the glow-up.
           </p>
           <Button
-            className="bg-black text-[#39FF14] font-bold uppercase px-12 py-6 text-xl border-4 border-black hover:bg-[#39FF14] hover:text-black hover:border-black transition-all"
+            className="btn-soft bg-emerald-500 text-white px-10 py-4 text-base"
             onClick={() => navigate("/register")}
             data-testid="bottom-cta-btn"
           >
-            START YOUR DISASTER
+            Claim your chaotic era
           </Button>
         </div>
       </section>
