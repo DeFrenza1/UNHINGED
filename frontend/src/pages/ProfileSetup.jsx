@@ -654,7 +654,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
 
               {/* Custom Flag */}
               <div className="space-y-2">
-                <Label className="text-[#E0E0E0] uppercase text-sm">Add Custom Red Flag</Label>
+                <Label className="text-slate-700 text-sm font-medium">Add custom red flag</Label>
                 <div className="flex gap-2">
                   <Input
                     placeholder="My unique disaster trait..."
