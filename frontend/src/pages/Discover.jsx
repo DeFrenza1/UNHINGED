@@ -139,7 +139,7 @@ const Discover = ({ user, token }) => {
         ) : currentProfile && (
           <>
             {/* Profile Card */}
-            <div className="bg-[#111] border-2 border-white/20 overflow-hidden card-brutal" data-testid="profile-card">
+            <div className="card-soft overflow-hidden" data-testid="profile-card">
               {/* Photo */}
               <div className="relative aspect-[3/4] bg-[#1a1a1a]">
                 {currentProfile.photos && currentProfile.photos.length > 0 ? (
