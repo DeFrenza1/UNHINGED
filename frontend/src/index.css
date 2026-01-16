@@ -145,8 +145,7 @@ input:focus, textarea:focus, select:focus {
 
 /* Red flag badge */
 .red-flag-badge {
-  @apply bg-red-900/30 border border-red-500/50 px-3 py-1 text-red-400 text-sm font-mono;
-  transform: rotate(-1deg);
+  @apply bg-rose-500/10 border border-rose-400/60 px-3 py-1 text-rose-200 text-sm font-mono rounded-full;
 }
 
 /* Neon text */
