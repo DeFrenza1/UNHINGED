@@ -148,13 +148,13 @@ input:focus, textarea:focus, select:focus {
   @apply bg-rose-500/10 border border-rose-400/60 px-3 py-1 text-rose-200 text-sm font-mono rounded-full;
 }
 
-/* Neon text */
+/* Subtle glow text */
 .neon-text {
-  text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
 }
 
 .neon-text-pink {
-  text-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF, 0 0 30px #FF00FF;
+  text-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
 }
 
 /* Profile card tilt */
