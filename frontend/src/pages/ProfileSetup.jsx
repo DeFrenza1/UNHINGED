@@ -717,7 +717,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
             <div className="space-y-6">
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold uppercase mb-2 flex items-center justify-center gap-2">
-                  <Camera className="w-6 h-6 text-[#39FF14]" />
+                  <Camera className="w-6 h-6 text-purple-500" />
                   YOUR WORST PHOTOS
                 </h2>
                 <p className="text-[#E0E0E0]/60 font-mono text-sm">Bad lighting? Double chin? Perfect. Show us your real self.</p>
