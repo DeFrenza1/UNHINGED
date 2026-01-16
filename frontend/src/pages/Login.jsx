@@ -48,29 +48,29 @@ const Login = ({ login }) => {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <AlertTriangle className="w-10 h-10 text-[#39FF14]" />
-          <span className="text-3xl font-bold tracking-tighter text-[#39FF14]">UNHINGED</span>
+          <AlertTriangle className="w-10 h-10 text-emerald-500" />
+          <span className="text-3xl font-bold tracking-tighter text-slate-900">UNHINGED</span>
         </div>
 
         {/* Card */}
-        <div className="bg-[#111] border-2 border-white/20 p-8">
-          <h1 className="text-2xl font-bold uppercase mb-2 text-center">WELCOME BACK</h1>
-          <p className="text-[#E0E0E0]/60 font-mono text-sm text-center mb-8">
-            Ready for more chaos?
+        <div className="card-soft p-8">
+          <h1 className="text-2xl font-bold mb-2 text-center text-slate-900">Welcome back</h1>
+          <p className="text-slate-600 font-mono text-sm text-center mb-8">
+            Log in to pick up where the chaos left off.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-[#E0E0E0] uppercase text-sm">Email</Label>
+              <Label htmlFor="email" className="text-slate-700 text-sm font-medium">Email</Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#E0E0E0]/40" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <Input
                   id="email"
                   type="email"
-                  placeholder="disaster@example.com"
+                  placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-black border-2 border-white/30 pl-10 h-12 font-mono text-[#E0E0E0] placeholder:text-white/30 focus:border-[#39FF14] rounded-none"
+                  className="bg-white border border-[hsl(var(--border))] pl-10 h-12 font-mono text-slate-900 placeholder:text-slate-400 rounded-full"
                   required
                   data-testid="login-email-input"
                 />
@@ -78,7 +78,7 @@ const Login = ({ login }) => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-[#E0E0E0] uppercase text-sm">Password</Label>
+              <Label htmlFor="password" className="text-slate-700 text-sm font-medium">Password</Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#E0E0E0]/40" />
                 <Input

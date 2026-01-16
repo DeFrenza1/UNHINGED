@@ -65,9 +65,9 @@ const Landing = () => {
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight text-slate-900">
-              <span className="block">IF YOU CAN&apos;T HANDLE</span>
-              <span className="block text-emerald-500">MY WORST RED FLAGS</span>
-              <span className="block text-slate-700 text-2xl md:text-3xl mt-2">YOU DON&apos;T DESERVE MY SLIGHTLY BETTER SELFIES</span>
+              <span className="block">If you can&apos;t handle</span>
+              <span className="block text-emerald-500">my worst red flags,</span>
+              <span className="block text-slate-700 text-2xl md:text-3xl mt-2">you don&apos;t deserve my slightly better selfies.</span>
             </h1>
             
             <p className="text-lg md:text-xl text-slate-600 font-mono mb-10 max-w-2xl mx-auto">
