@@ -82,7 +82,7 @@ class UnhingedAPITester:
 
     def test_register(self):
         """Test user registration"""
-        test_email = f"test_{uuid.uuid4().hex[:8]}@unhinged.test"
+        test_email = f"test_{uuid.uuid4().hex[:8]}@example.com"
         test_data = {
             "name": "Test Chaos User",
             "email": test_email,
