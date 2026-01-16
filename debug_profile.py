@@ -1,5 +1,6 @@
 import requests
 import json
+import uuid
 
 # Test the profile update endpoint directly
 base_url = "https://dating-quirks.preview.emergentagent.com"
@@ -8,7 +9,7 @@ api_url = f"{base_url}/api"
 # First register a user
 register_data = {
     "name": "Debug User",
-    "email": "debug@example.com",
+    "email": f"debug_{uuid.uuid4().hex[:8]}@example.com",
     "password": "DebugPass123!"
 }
 
@@ -37,6 +38,7 @@ if response.status_code == 200:
     if response.status_code == 200:
         data = response.json()
         print(f"Profile complete: {data.get('profile_complete')}")
+        print(f"Profile complete type: {type(data.get('profile_complete'))}")
         print(f"Age: {data.get('age')}")
         print(f"Bio: {data.get('bio')}")
         print(f"Red flags: {data.get('red_flags')}")
