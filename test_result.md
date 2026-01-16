@@ -14,15 +14,18 @@ user_problem_statement: "Unhinged dating app with expanded Hinge-style profiles,
 backend:
   - task: "Expand user profile schema for Hinge-style identity, lifestyle, and match preferences"
     implemented: true
-    working: false
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
         comment: "Added new optional fields (identity, lifestyle, match prefs) to UserProfile and ProfileUpdate, updated registration and Google session user docs. Needs endpoint regression testing."
+      - working: true
+        agent: "testing"
+        comment: "✅ COMPREHENSIVE TESTING COMPLETED - All expanded profile schema endpoints working correctly. Fixed minor profile_complete logic bug. Verified: 1) Registration with sane defaults for all new fields (gender_identity, pronouns, sexuality, interested_in, city, country, drinking, smoking, exercise, pref_age_min/max, pref_genders, pref_distance_km, dealbreaker_red_flags). 2) Login with valid token generation. 3) /api/auth/me returns all new fields with no MongoDB _id serialization issues. 4) /api/profile returns UserProfile-compatible payload with proper created_at handling. 5) PUT /api/profile successfully updates all new fields with correct profile_complete logic (based on age, bio, red_flags, photos only). 6) Regression tests pass: red-flags/suggestions, prompts/suggestions, ai/roast working with new schema. All 11 tests passed (100% success rate)."
   - task: "Light filtering in /api/discover based on basic prefs (age, gender)"
     implemented: false
     working: "NA"
