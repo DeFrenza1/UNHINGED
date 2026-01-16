@@ -293,7 +293,7 @@ const Discover = ({ user, token }) => {
           {matchModal && (
             <div className="text-center py-4">
               <div className="flex justify-center items-center gap-4 mb-6">
-                <div className="w-20 h-20 rounded-full border-2 border-[#39FF14] overflow-hidden">
+                <div className="w-20 h-20 rounded-full border border-[hsl(var(--border))] overflow-hidden">
                   <img
                     src={user?.picture || "https://via.placeholder.com/80"}
                     alt="You"
@@ -311,14 +311,14 @@ const Discover = ({ user, token }) => {
               </div>
               
               <p className="font-mono text-lg mb-6">
-                You and <span className="text-[#39FF14]">{matchModal.matched_user?.name}</span> have matched!
+                You and <span className="text-purple-500">{matchModal.matched_user?.name}</span> have matched!
               </p>
 
               <div className="flex gap-3">
                 <Button
                   variant="outline"
                   onClick={() => setMatchModal(null)}
-                  className="flex-1 border-2 border-white/30 text-[#E0E0E0] hover:bg-white/10 rounded-none"
+                  className="flex-1 border border-[hsl(var(--border))] text-slate-700 hover:bg-slate-100 rounded-full"
                 >
                   KEEP SWIPING
                 </Button>
@@ -327,7 +327,7 @@ const Discover = ({ user, token }) => {
                     setMatchModal(null);
                     navigate(`/chat/${matchModal.match_id}`);
                   }}
-                  className="flex-1 bg-[#39FF14] text-black font-bold hover:bg-[#39FF14]/80 rounded-none"
+                  className="flex-1 btn-soft bg-purple-500 text-white font-semibold"
                   data-testid="send-message-btn"
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />

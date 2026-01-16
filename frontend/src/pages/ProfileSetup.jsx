@@ -830,7 +830,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
             <Button
               onClick={handleNext}
               disabled={loading}
-              className="bg-[#39FF14] text-black font-bold uppercase px-8 border-2 border-[#39FF14] hover:bg-black hover:text-[#39FF14] transition-all btn-brutal rounded-none"
+              className="btn-soft bg-purple-500 text-white font-semibold px-8 py-3 text-sm"
               data-testid="profile-next-btn"
             >
               {loading ? (
