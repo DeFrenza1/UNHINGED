@@ -239,7 +239,7 @@ const Chat = ({ user, token }) => {
       </div>
 
       {/* Input */}
-      <div className="border-t-2 border-white/10 bg-[#0a0a0a] flex-shrink-0">
+      <div className="border-t border-[hsl(var(--border))] bg-white flex-shrink-0">
         <form onSubmit={sendMessage} className="max-w-2xl mx-auto px-4 py-3">
           <div className="flex gap-2">
             <Button
@@ -248,7 +248,7 @@ const Chat = ({ user, token }) => {
               size="icon"
               onClick={generateIcebreaker}
               disabled={generatingIcebreaker}
-              className="text-[#00FFFF] hover:bg-[#00FFFF]/10 flex-shrink-0"
+              className="text-purple-500 hover:bg-purple-50 flex-shrink-0"
               title="Generate AI icebreaker"
               data-testid="icebreaker-btn"
             >
