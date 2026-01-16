@@ -258,6 +258,65 @@ const Settings = ({ user, setUser, logout, token }) => {
               />
             </div>
 
+
+            {/* Danger Zone */}
+            <div className="mt-8 border-t border-[hsl(var(--border))] pt-6 space-y-4">
+              <h3 className="text-sm font-semibold text-red-600">Danger zone</h3>
+              <p className="text-slate-500 font-mono text-xs max-w-md">
+                You can temporarily hide your profile or permanently delete your account. Deleting is irreversible.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleDisableAccount}
+                  className="border border-amber-400 text-amber-700 hover:bg-amber-50 rounded-full text-xs px-4 py-2"
+                  data-testid="disable-account-btn"
+                >
+                  Disable account
+                </Button>
+
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="border border-red-400 text-red-600 hover:bg-red-50 rounded-full text-xs px-4 py-2"
+                      data-testid="delete-account-btn"
+                    >
+                      Delete account
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="bg-white border border-[hsl(var(--border))] rounded-2xl max-w-md">
+                    <DialogHeader>
+                      <DialogTitle className="text-slate-900">Delete your account?</DialogTitle>
+                    </DialogHeader>
+                    <p className="text-slate-600 font-mono text-xs mb-4">
+                      This will permanently delete your profile, matches, and messages. This action cannot be undone.
+                    </p>
+                    <div className="flex justify-end gap-2 mt-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="border border-[hsl(var(--border))] text-slate-700 hover:bg-slate-100 rounded-full text-xs px-4 py-2"
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        type="button"
+                        onClick={handleDeleteAccount}
+                        className="btn-soft bg-red-500 text-white text-xs px-4 py-2"
+                        data-testid="confirm-delete-account-btn"
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </div>
+
             {/* Red Flags */}
             <div className="space-y-3">
               <Label className="text-red-400 uppercase text-sm">Red Flags</Label>
