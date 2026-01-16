@@ -203,7 +203,7 @@ const Settings = ({ user, setUser, logout, token }) => {
           </Button>
           {roast && (
             <div className="mt-4 bg-[#FF00FF]/10 border border-[#FF00FF]/30 p-4 font-mono text-sm text-[#E0E0E0]">
-              "{roast}"
+              &quot;{roast}&quot;
             </div>
           )}
         </div>

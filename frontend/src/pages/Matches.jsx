@@ -78,7 +78,7 @@ const Matches = ({ user, token }) => {
             <Heart className="w-16 h-16 text-[#FF00FF]/50 mb-4" />
             <h2 className="text-2xl font-bold uppercase mb-2">NO MATCHES YET</h2>
             <p className="text-[#E0E0E0]/60 font-mono mb-6 max-w-md">
-              Your chaos energy hasn't connected with anyone yet. Keep swiping!
+              Your chaos energy hasn&apos;t connected with anyone yet. Keep swiping!
             </p>
             <Button
               onClick={() => navigate("/discover")}

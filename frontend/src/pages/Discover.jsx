@@ -125,7 +125,7 @@ const Discover = ({ user, token }) => {
             <Flag className="w-16 h-16 text-[#FF00FF] mb-4" />
             <h2 className="text-2xl font-bold uppercase mb-2">NO MORE CHAOS</h2>
             <p className="text-[#E0E0E0]/60 font-mono mb-6">
-              You've swiped through all available disasters. Check back later!
+              You&apos;ve swiped through all available disasters. Check back later!
             </p>
             <Button
               onClick={fetchProfiles}
@@ -285,7 +285,7 @@ const Discover = ({ user, token }) => {
         <DialogContent className="bg-[#111] border-2 border-[#39FF14] text-[#E0E0E0] max-w-md">
           <DialogHeader>
             <DialogTitle className="text-center">
-              <div className="text-[#39FF14] text-4xl font-bold uppercase mb-2 neon-text">IT'S A MATCH!</div>
+              <div className="text-[#39FF14] text-4xl font-bold uppercase mb-2 neon-text">IT&apos;S A MATCH!</div>
               <p className="text-[#E0E0E0]/60 font-mono text-sm">Two beautiful disasters, united in chaos</p>
             </DialogTitle>
           </DialogHeader>

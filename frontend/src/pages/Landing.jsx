@@ -115,7 +115,7 @@ const Landing = () => {
           <h2 className="text-3xl md:text-5xl font-bold uppercase mb-4 border-b-4 border-[#39FF14] inline-block pb-2">
             HOW IT WORKS
           </h2>
-          <p className="text-[#E0E0E0]/60 font-mono mb-12">(Spoiler: It's a beautiful disaster)</p>
+          <p className="text-[#E0E0E0]/60 font-mono mb-12">(Spoiler: It&apos;s a beautiful disaster)</p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-white/20">
             {features.map((feature, index) => (
