@@ -270,16 +270,16 @@ const ProfileSetup = ({ user, setUser, token }) => {
               <div
                 className={`w-10 h-10 flex items-center justify-center border-2 font-bold ${
                   s === step
-                    ? "bg-[#39FF14] border-[#39FF14] text-black"
+                    ? "bg-purple-500 border-purple-500 text-white"
                     : s < step
-                    ? "bg-[#39FF14]/20 border-[#39FF14] text-[#39FF14]"
+                    ? "bg-purple-100 border-purple-500 text-purple-700"
                     : "border-white/20 text-white/40"
                 }`}
               >
                 {s}
               </div>
               {s < 4 && (
-                <div className={`w-16 md:w-24 h-0.5 ${s < step ? "bg-[#39FF14]" : "bg-white/20"}`} />
+                <div className={`w-16 md:w-24 h-0.5 ${s < step ? "bg-purple-500" : "bg-slate-200"}`} />
               )}
             </div>
           ))}
@@ -298,7 +298,7 @@ const ProfileSetup = ({ user, setUser, token }) => {
               <div className="space-y-4">
                 {/* Name & display name */}
                 <div className="space-y-2">
-                  <Label className="text-[#E0E0E0] uppercase text-sm">Name</Label>
+                  <Label className="text-slate-700 text-sm font-medium">Name</Label>
                   <Input
                     placeholder="What should we call you?"
                     value={profile.display_name}

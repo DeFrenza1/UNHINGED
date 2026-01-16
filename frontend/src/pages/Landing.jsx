@@ -34,7 +34,7 @@ const Landing = () => {
       <div className="relative">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 text-[#39FF14]/10 text-9xl font-bold rotate-12">🚩</div>
+          <div className="absolute top-20 left-10 text-purple-200 text-9xl font-bold rotate-12">🚩</div>
           <div className="absolute bottom-40 right-20 text-[#FF00FF]/10 text-8xl font-bold -rotate-12">💀</div>
           <div className="absolute top-1/2 left-1/3 text-[#00FFFF]/10 text-7xl font-bold rotate-6">⚡</div>
         </div>
@@ -49,7 +49,7 @@ const Landing = () => {
             <div className="flex gap-4">
               <Button
                 variant="ghost"
-                className="text-[#E0E0E0] hover:text-[#39FF14] hover:bg-transparent font-mono uppercase"
+                className="text-slate-700 hover:text-purple-500 hover:bg-purple-50 font-mono uppercase"
                 onClick={() => navigate("/login")}
                 data-testid="nav-login-btn"
               >
@@ -99,7 +99,7 @@ const Landing = () => {
           <div className="mt-20 border-y-2 border-[#333] py-4 overflow-hidden">
             <div className="flex animate-marquee whitespace-nowrap">
               {[...Array(10)].map((_, i) => (
-                <span key={i} className="mx-8 text-[#39FF14]/50 font-mono uppercase">
+                <span key={i} className="mx-8 text-purple-400 font-mono uppercase">
                   🚩 RED FLAGS WELCOME • 💀 CHAOTIC ENERGY • ⚡ UNFILTERED MATCHES • 
                 </span>
               ))}

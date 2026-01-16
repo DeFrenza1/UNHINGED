@@ -113,7 +113,7 @@ const Login = ({ login }) => {
               <div className="w-full border-t-2 border-white/20"></div>
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-[#111] px-4 text-[#E0E0E0]/60 font-mono text-sm uppercase">Or</span>
+              <span className="bg-white px-4 text-slate-500 font-mono text-xs uppercase tracking-wide">Or</span>
             </div>
           </div>
 
