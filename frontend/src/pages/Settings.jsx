@@ -379,7 +379,7 @@ const Settings = ({ user, setUser, logout, token }) => {
             {user?.bio && (
               <div>
                 <Label className="text-slate-500 text-xs">Bio</Label>
-                <p className="text-[#E0E0E0] font-mono">{user.bio}</p>
+                <p className="text-slate-700 font-mono">{user.bio}</p>
               </div>
             )}
 
@@ -411,15 +411,15 @@ const Settings = ({ user, setUser, logout, token }) => {
 
             {user?.looking_for && (
               <div>
-                <Label className="text-[#E0E0E0]/60 uppercase text-xs">Looking For</Label>
-                <p className="text-[#E0E0E0] font-mono">{user.looking_for}</p>
+                <Label className="text-slate-500 text-xs">Looking for</Label>
+                <p className="text-slate-700 font-mono">{user.looking_for}</p>
               </div>
             )}
 
             <Button
               onClick={() => navigate("/profile-setup")}
               variant="outline"
-              className="w-full border-2 border-[#39FF14]/50 text-[#39FF14] hover:bg-[#39FF14]/10 font-mono rounded-none mt-4"
+              className="w-full border border-purple-400 text-purple-600 hover:bg-purple-50 font-mono rounded-full mt-4"
               data-testid="edit-full-profile-btn"
             >
               EDIT FULL PROFILE
