@@ -144,23 +144,23 @@ const Register = ({ login }) => {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#39FF14] text-black font-bold uppercase h-12 border-2 border-[#39FF14] hover:bg-black hover:text-[#39FF14] transition-all btn-brutal rounded-none mt-2"
+              className="w-full btn-soft bg-emerald-500 text-white h-12 text-sm font-semibold mt-2"
               data-testid="register-submit-btn"
             >
               {loading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
               ) : (
-                "BECOME UNHINGED"
+                "Sign up"
               )}
             </Button>
           </form>
 
           <div className="relative my-8">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t-2 border-white/20"></div>
+              <div className="w-full border-t border-[hsl(var(--border))]"></div>
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-[#111] px-4 text-[#E0E0E0]/60 font-mono text-sm uppercase">Or</span>
+              <span className="bg-white px-4 text-slate-500 font-mono text-xs uppercase tracking-wide">Or</span>
             </div>
           </div>
 
@@ -168,7 +168,7 @@ const Register = ({ login }) => {
             type="button"
             variant="outline"
             onClick={handleGoogleLogin}
-            className="w-full bg-transparent text-[#E0E0E0] border-2 border-white/30 font-bold uppercase h-12 hover:bg-white/10 hover:border-white/50 transition-all rounded-none"
+            className="w-full btn-soft bg-white text-slate-900 border border-[hsl(var(--border))] h-12 text-sm font-semibold hover:bg-slate-50"
             data-testid="google-register-btn"
           >
             <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
@@ -180,10 +180,10 @@ const Register = ({ login }) => {
             SIGN UP WITH GOOGLE
           </Button>
 
-          <p className="text-center text-[#E0E0E0]/60 font-mono text-sm mt-8">
-            Already unhinged?{" "}
-            <Link to="/login" className="text-[#39FF14] hover:underline" data-testid="login-link">
-              LOG IN
+          <p className="text-center text-slate-600 font-mono text-sm mt-8">
+            Already have an account?{" "}
+            <Link to="/login" className="text-emerald-600 hover:underline" data-testid="login-link">
+              Log in
             </Link>
           </p>
         </div>
