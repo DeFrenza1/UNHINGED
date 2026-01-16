@@ -169,12 +169,11 @@ input:focus, textarea:focus, select:focus {
 
 /* Chat bubbles */
 .chat-bubble-me {
-  @apply bg-[#39FF14] text-black p-3 max-w-[80%] self-end font-mono border-2 border-black;
-  box-shadow: 2px 2px 0px 0px #000000;
+  @apply bg-emerald-500 text-white p-3 max-w-[80%] self-end font-mono rounded-2xl rounded-br-sm;
 }
 
 .chat-bubble-them {
-  @apply bg-[#222] text-white p-3 max-w-[80%] self-start font-mono border-2 border-white/20;
+  @apply bg-slate-700 text-white p-3 max-w-[80%] self-start font-mono rounded-2xl rounded-bl-sm;
 }
 
 /* Pulse animation for notifications */
