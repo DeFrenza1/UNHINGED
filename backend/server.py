@@ -358,6 +358,46 @@ async def register(user_data: UserCreate):
         "drinking": None,
         "smoking": None,
         "cannabis": None,
+
+@api_router.get("/cloudinary/signature", response_model=CloudinarySignatureResponse)
+async def get_cloudinary_signature(
+    resource_type: str = "image",
+    folder: str = "uploads"
+):
+    """Return a signed payload so frontend can upload directly to Cloudinary.
+
+    This keeps the API secret on the backend while allowing clients to upload files.
+    """
+    if resource_type not in {"image", "video"}:
+        raise HTTPException(status_code=400, detail="Invalid resource type")
+
+    # Only allow uploads into controlled folders
+    allowed_prefixes = ("users/", "uploads/")
+    if not any(folder.startswith(p) for p in allowed_prefixes):
+        raise HTTPException(status_code=400, detail="Invalid folder path")
+
+    timestamp = int(datetime.now(timezone.utc).timestamp())
+    params_to_sign = {
+        "timestamp": timestamp,
+        "folder": folder,
+        "resource_type": resource_type,
+    }
+
+    api_secret = os.environ.get("CLOUDINARY_API_SECRET")
+    if not api_secret:
+        raise HTTPException(status_code=500, detail="Cloudinary not configured")
+
+    signature = cloudinary.utils.api_sign_request(params_to_sign, api_secret)
+
+    return CloudinarySignatureResponse(
+        signature=signature,
+        timestamp=timestamp,
+        cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME", ""),
+        api_key=os.environ.get("CLOUDINARY_API_KEY", ""),
+        folder=folder,
+        resource_type=resource_type,
+    )
+
         "drugs": None,
         "religion": None,
         "politics": None,
