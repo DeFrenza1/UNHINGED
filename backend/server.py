@@ -198,6 +198,15 @@ class TokenResponse(BaseModel):
 def hash_password(password: str) -> str:
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
+
+class CloudinarySignatureResponse(BaseModel):
+    signature: str
+    timestamp: int
+    cloud_name: str
+    api_key: str
+    folder: str
+    resource_type: str
+
 def verify_password(password: str, hashed: str) -> bool:
     return bcrypt.checkpw(password.encode('utf-8'), hashed.encode('utf-8'))
 
