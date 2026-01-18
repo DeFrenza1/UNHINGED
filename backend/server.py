@@ -335,7 +335,7 @@ async def register(user_data: UserCreate):
     user_id = f"user_{uuid.uuid4().hex[:12]}"
     hashed_pw = hash_password(user_data.password)
     
-    user_doc = {
+        user_doc = {
         "user_id": user_id,
         "email": user_data.email,
         "name": user_data.name,
@@ -387,6 +387,14 @@ async def register(user_data: UserCreate):
         # Meta
         "created_at": datetime.now(timezone.utc).isoformat(),
         "profile_complete": False
+    }
+
+    await db.users.insert_one(user_doc)
+    token = create_jwt_token(user_id, user_data.email)
+
+    # Get user without _id field to avoid ObjectId serialization issues
+    user_response = await db.users.find_one({"user_id": user_id}, {"_id": 0, "password_hash": 0})
+    return TokenResponse(access_token=token, user=user_response)
 
 @api_router.get("/cloudinary/signature", response_model=CloudinarySignatureResponse)
 async def get_cloudinary_signature(
