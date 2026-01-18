@@ -387,6 +387,35 @@ async def register(user_data: UserCreate):
         # Meta
         "created_at": datetime.now(timezone.utc).isoformat(),
         "profile_complete": False
+        "drugs": None,
+        "religion": None,
+        "politics": None,
+        "exercise": None,
+        "diet": None,
+        "has_kids": None,
+        "wants_kids": None,
+        "relationship_type": None,
+        # Red flags & prompts
+        "red_flags": [],
+        "dealbreaker_red_flags": [],
+        "negative_qualities": [],
+        "photos": [],
+        "worst_photo_caption": None,
+        "prompts": [],
+        # What they are looking for
+        "looking_for": None,
+        # Match preferences
+        "pref_age_min": None,
+        "pref_age_max": None,
+        "pref_genders": [],
+        "pref_distance_km": None,
+        "pref_wants_kids": None,
+        "pref_relationship_type": None,
+        # Account status
+        "is_active": True,
+        # Meta
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "profile_complete": False
 
 @api_router.get("/cloudinary/signature", response_model=CloudinarySignatureResponse)
 async def get_cloudinary_signature(
