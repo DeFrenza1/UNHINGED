@@ -331,7 +331,7 @@ async def register(user_data: UserCreate):
     existing = await db.users.find_one({"email": user_data.email}, {"_id": 0})
     if existing:
         raise HTTPException(status_code=400, detail="Email already registered")
-    
+
     user_id = f"user_{uuid.uuid4().hex[:12]}"
     hashed_pw = hash_password(user_data.password)
 
@@ -386,7 +386,7 @@ async def register(user_data: UserCreate):
         "is_active": True,
         # Meta
         "created_at": datetime.now(timezone.utc).isoformat(),
-        "profile_complete": False
+        "profile_complete": False,
     }
 
     await db.users.insert_one(user_doc)
@@ -396,10 +396,11 @@ async def register(user_data: UserCreate):
     user_response = await db.users.find_one({"user_id": user_id}, {"_id": 0, "password_hash": 0})
     return TokenResponse(access_token=token, user=user_response)
 
+
 @api_router.get("/cloudinary/signature", response_model=CloudinarySignatureResponse)
 async def get_cloudinary_signature(
     resource_type: str = "image",
-    folder: str = "uploads"
+    folder: str = "uploads",
 ):
     """Return a signed payload so frontend can upload directly to Cloudinary.
 
@@ -434,44 +435,6 @@ async def get_cloudinary_signature(
         folder=folder,
         resource_type=resource_type,
     )
-
-        "drugs": None,
-        "religion": None,
-        "politics": None,
-        "exercise": None,
-        "diet": None,
-        "has_kids": None,
-        "wants_kids": None,
-        "relationship_type": None,
-        # Red flags & prompts
-        "red_flags": [],
-        "dealbreaker_red_flags": [],
-        "negative_qualities": [],
-        "photos": [],
-        "worst_photo_caption": None,
-        "prompts": [],
-        # What they are looking for
-        "looking_for": None,
-        # Match preferences
-        "pref_age_min": None,
-        "pref_age_max": None,
-        "pref_genders": [],
-        "pref_distance_km": None,
-        "pref_wants_kids": None,
-        "pref_relationship_type": None,
-        # Account status
-        "is_active": True,
-        # Meta
-        "created_at": datetime.now(timezone.utc).isoformat(),
-        "profile_complete": False
-    }
-    
-    await db.users.insert_one(user_doc)
-    token = create_jwt_token(user_id, user_data.email)
-    
-    # Get user without _id field to avoid ObjectId serialization issues
-    user_response = await db.users.find_one({"user_id": user_id}, {"_id": 0, "password_hash": 0})
-    return TokenResponse(access_token=token, user=user_response)
 
 @api_router.post("/auth/login", response_model=TokenResponse)
 async def login(user_data: UserLogin):
