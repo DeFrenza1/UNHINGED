@@ -334,8 +334,8 @@ async def register(user_data: UserCreate):
     
     user_id = f"user_{uuid.uuid4().hex[:12]}"
     hashed_pw = hash_password(user_data.password)
-    
-        user_doc = {
+
+    user_doc = {
         "user_id": user_id,
         "email": user_data.email,
         "name": user_data.name,
