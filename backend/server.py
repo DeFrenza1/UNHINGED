@@ -17,7 +17,7 @@ import cloudinary
 import cloudinary.utils
 
 
-# Load environment variables
+ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
@@ -32,10 +32,6 @@ cloudinary.config(
     api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
     secure=True,
 )
-
-
-ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR / '.env')
 
 # JWT Configuration
 # In production this MUST come from environment; no insecure fallback
